@@ -1,5 +1,5 @@
 header.main {
-	position: absolute;
+	position: fixed;
 	left: 0;
 	top: 0;
 	width: 35%;
@@ -11,4 +11,17 @@ header.main {
 	margin-left: 35%;
 	width: 65%;
 
+}
+
+.main-container .container{
+	max-width: 100%;
+}
+
+p i {
+	margin: 1em 0;
+	display: block;
+}
+
+ul li {
+	padding: .25em 0;
 }
