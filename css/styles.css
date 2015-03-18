@@ -13,6 +13,10 @@ header.main {
 
 }
 
+.container.website {
+	margin-bottom: 3rem;
+}
+
 .main-container .container{
 	max-width: 100%;
 }
