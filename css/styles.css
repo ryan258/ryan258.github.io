@@ -3,4 +3,12 @@ header.main {
 	left: 0;
 	top: 0;
 	width: 35%;
+	max-width: 380px;
+	padding: 3rem 2rem
+}
+
+.main.container {
+	margin-left: 35%;
+	width: 65%;
+
 }
