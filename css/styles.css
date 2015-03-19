@@ -21,6 +21,10 @@ header.main {
 	max-width: 100%;
 }
 
+p {
+	font-size: 1.25em;
+}
+
 p i {
 	margin: 1em 0;
 	display: block;
