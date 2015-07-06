@@ -3,7 +3,7 @@ title: Ryan Johnson
 email: ryanleejwebdev@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   The Web Home of Ryan Johnson
-baseurl: "http://ryan258.github.io/" # the subpath of your site, e.g. /blog/
+baseurl: "http://ryan258.github.io" # the subpath of your site, e.g. /blog/
 url: "http://ryan258.github.io/" # the base hostname & protocol for your site
 twitter_username: adios_box
 github_username:
