@@ -1,99 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>The Github Page of Ryan Johnson</title>
-	
-	<!-- Bootstrap CSS-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <link rel="stylesheet" href="css/styles.css">
-</head>
+---
+layout: page
+title: Welcome to the Home Page of Ryan Johnson
+---
 
-<body>
-<header class="main">
-	<h1 class="title">Ryan Johnson</h1>
-	<p class="lead">I'm a Front End Developer, Drupal Developer, and Serial Entrepreneur.</p>
-	<nav>
+<div class="row">       
+   
+  <div class="large-9 push-3 columns">
+    
+    <h1>Hello world!</h1>
+		<p>Welcome to my github page where you can view my portfolio and resume.</p>
+		<p>I'm currently working on developing a new business called <strong>ROOTS</strong> that I'm very excited about! I'll be arriving back home in Minneapolis, Minnesota April 7th.</p>
+
+    <h2>Technologies I Use</h2>
+		<p>I believe in the pursuit of knowledge and these are the skills that I've acquired over the course of my career.</p>
+		
 		<ul>
-			<li><a href="/" class="active">Home</a></li>
-			<li><a href="portfolio">Portfolio</a></li>
-			<li><a href="resume">Resume</a></li>
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>Javascript</li>
+			<li>Bootstrap</li>
+			<li>Jekyll</li>
+			<li>Git</li>
+			<li>Jquery</li>
+			<li>Sass</li>
+			<li>Drupal</li>
+			<li><abbr class="initialism" title="Content Managment System">CMS</abbr></li>
 		</ul>
-	</nav>
-	<hr>
-	<ul>
-		<li><a href="https://www.drupal.org/u/ryan258">Drupal Profile</a></li>
-		<li><a href="http://www.258webco.com">25/8</a></li>
-		<li><a href="http://www.roots.com.ar">ROOTS</a></li>
-		<li><a href="https://www.codeschool.com/users/685743">Code School Report Card</a></li>
-		<li><a href="learnable.com/users/ryan258">Learnable Profile</a></li>
-		<li><a href="https://www.linkedin.com/profile/public-profile-settings?trk=prof-edit-edit-public_profile">LinkedIn Profile</a></li>
-	</ul>
-</header>
-
-<div class="main-container">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h1>Hello world!</h1>
-				<p class="lead">Welcome to my github page where you can view my portfolio and resume.</p>
-				<p>I'm currently working on developing a new business called <strong>ROOTS</strong> that I'm very excited about! I'll be arriving back home in Minneapolis, Minnesota April 7th.</p>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-				<h2>Technologies I Use</h2>
-				<p>I believe in the pursuit of knowledge and these are the skills that I've acquired over the course of my career.</p>
-				<ul>
-					<li>HTML</li>
-					<li>CSS</li>
-					<li>Javascript</li>
-					<li>Bootstrap</li>
-					<li>Jekyll</li>
-					<li>Git</li>
-					<li>Jquery</li>
-					<li>Sass</li>
-					<li>Drupal</li>
-					<li><abbr class="initialism" title="Content Managment System">CMS</abbr></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
-			</div>
-		</div>
-	</div>
-</div> <!-- .main-container -->
-
-<footer>
-	<div class="container-fluid text-center">
-		<div class="row">
-			<p><address>
-				<strong>Ryan Lee Johnson</strong><br />
-				Buenos Aires | Minneapolis<br />
-				612-306-7209
-			</address></p>
-		</div>
-	</div>
-</footer>
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-</body>
-</html>
+          
+  </div>
+   
+  <div class="large-3 pull-9 columns">
+    
+		<p><img src="http://placehold.it/320x240&text=Ad"/></p>
+		<p>I'm a Front End Developer, Drupal Developer, and Serial Entrepreneur.</p>
+    {% include profile-links.html %}
+      
+  </div>
+  
+</div>
