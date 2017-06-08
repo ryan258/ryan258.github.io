@@ -1,0 +1,172 @@
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Home of Ryan Johnson</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/app.css">
+  </head>
+  <body>
+    <div class="top-bar n-main simple">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <li class="menu-text"><a href="../../">Ryan Johnson</a></li>
+          <!-- <li><a href="../../about">About</a></li>
+          <li><a href="../../articles">Articles</a></li>
+          <li><a href="../../experiments">Experiments</a></li> -->
+          <li><a href="../../guides">Guides</a>
+            <ul class="menu">
+              <!-- <li><a href="../../guides/personas">"Personas!"</a></li>
+              <li><a href="../../guides/design-system">Design System</a></li> -->
+              <li><a href="../../guides/gamify">Workflow</a></li>
+            </ul>
+          </li>
+          <!-- <li><a href="../../bio">Bio</a></li> -->
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+    
+          <li><a href="../../portfolio">Portfolio</a></li>
+          <li><a href="../../resume">Resume</a></li>
+          <li><a href="../../contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- <link rel="stylesheet" href="../../assets/web-audio-css/app.css"> -->
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+    
+    <div class="row">
+      <div class="column  bg-black">
+        <h1>Making Music<br>w/ the Web Audio API</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column callout">
+        <h2>Steps:</h2>
+        <ol>
+          <li>Clone this Repo</li>
+          <li>Pick a song and find a MIDI file</li>
+          <li>Run that MIDI file through ToneJS's converter</li>
+          <li>Create a new folder and setup a synth</li>
+          <li>Paste output of MIDI conversion</li>
+          <li>Clean it up</li>
+          <li>Preview</li>
+        </ol>
+        <h3>Demo</h3>
+        <div class="screen">
+          <div class="container">
+            <div class="visuals">
+              <div class="tv">
+                <video width="324" height="282" loop>
+                  <source src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/355309/8-bit-zelda.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="analysers">
+                <div><span>pulse 1</span><canvas id="pulse" width="182" height="60"></canvas></div>
+                <div><span>pulse 2</span><canvas id="square" width="182" height="60"></canvas></div>
+                <div><span>triangle</span><canvas id="triangle" width="182" height="60"></canvas></div>
+                <div><span>noise</span><canvas id="noise" width="182" height="60"></canvas></div>
+              </div>
+            </div>
+            <div class="playlist">
+              <!-- <a class="song active" data-index="0">The Legend of Zelda (overworld)</a>
+              <a class="song" data-index="1">Pac-Man (intro)</a>
+              <a class="song" data-index="2">Super Mario Bros (overworld)</a>
+              <a class="song" data-index="3">Metroid (title theme)</a>
+              <a class="song" data-index="4">Kirby's Adventure (Vegetable Valley)</a> -->
+              <a class="song active" data-index="0"> >> Mortal Kombat!</a>
+              <a class="song" data-index="1"> >> Rad Racer!</a>
+            </div>
+            <div class="play-wrapper">
+              <a class="play"><i class="fa fa-play-circle" aria-hidden="true"></i></a>
+            </div>
+          </div>
+        </div>
+    
+      </div>
+      <div class="column bg-black">
+        <div class="callout">
+          <h2>Resources</h2>
+          <ul>
+            <li><a target="_blank" href="https://github.com/Tonejs/">ToneJS</a></li>
+            <li><a target="_blank" href="https://tonejs.github.io/MidiConvert/">ToneJS Midi-Converter</a></li>
+            <li><a target="_blank" href="http://mathjs.org/">MathJS</a></li>
+            <li><a target="_blank" href="http://www.ninsheetmusic.org/">ninsheetmusic.org</a></li>
+            <li><a target="_blank" href="https://musescore.com/">musescore.com</a></li>
+            <li><a target="_blank" href="http://wiki-score.org/doku.php">wiki-score.org</a></li>
+            <li><a target="_blank" href="https://en.wikipedia.org/wiki/ABC_notation">Wiki: ABC Notation</a></li>
+            <li><a target="_blank" href="https://codepen.io/gregh/post/recreating-legendary-8-bit-games-music-with-web-audio-api">Recreating Legendary 8-bit Game Music w/ Web Audio API</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="row">
+      <div class="column">
+      </div>
+    </div>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/0.9.0/Tone.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/3.9.0/math.min.js"></script>
+    <script src="../../assets/web-audio-js/filters.js"></script>
+    <script src="../../assets/web-audio-js/visualize.js"></script>
+    <script src="../../assets/web-audio-js/options.js"></script>
+    <!-- <script src="../../assets/web-audio-js/notes/zelda/bass1.js"></script>
+    <script src="../../assets/web-audio-js/notes/zelda/bass2.js"></script>
+    <script src="../../assets/web-audio-js/notes/zelda/synth1.js"></script>
+    <script src="../../assets/web-audio-js/notes/zelda/synth2.js"></script>
+    <script src="../../assets/web-audio-js/notes/pacman/bass1.js"></script>
+    <script src="../../assets/web-audio-js/notes/pacman/synth1.js"></script>
+    <script src="../../assets/web-audio-js/notes/mario/synth1.js"></script>
+    <script src="../../assets/web-audio-js/notes/mario/synth2.js"></script>
+    <script src="../../assets/web-audio-js/notes/mario/bass1.js"></script>
+    <script src="../../assets/web-audio-js/notes/mario/bass2.js"></script>
+    <script src="../../assets/web-audio-js/notes/metroid/synth1.js"></script>
+    <script src="../../assets/web-audio-js/notes/metroid/synth2.js"></script>
+    <script src="../../assets/web-audio-js/notes/kirby/synth1.js"></script>
+    <script src="../../assets/web-audio-js/notes/kirby/synth2.js"></script>
+    <script src="../../assets/web-audio-js/notes/kirby/bass1.js"></script>
+    <script src="../../assets/web-audio-js/notes/kirby/bass2.js"></script> -->
+    <script src="../../assets/web-audio-js/notes/mk/synth1.js"></script>
+    <script src="../../assets/web-audio-js/notes/radracer/synth1.js"></script>
+    <script src="../../assets/web-audio-js/songs.js"></script>
+    <script src="../../assets/web-audio-js/app.js"></script>
+    
+    <div class="top-bar n-footer simple">
+      <div class="top-bar-left">
+        <ul class="dropdown menu" data-dropdown-menu>
+          <!-- <li class="menu-text"><a href="../../">Ryan Johnson</a></li> -->
+          <!-- <li><a href="../../about">About</a></li> -->
+          <!-- <li><a href="../../articles">Articles</a></li>
+           -->
+          <!-- <li><a href="../../bio">Bio</a></li> -->
+          <li><a href="../../guides">Guides</a></li>
+          <li><a href="../../experiments">Experiments</a></li>
+        </ul>
+      </div>
+      <div class="top-bar-right">
+        <ul class="menu">
+    
+          <li><a href="../../portfolio">Portfolio</a></li>
+          <li><a href="../../resume">Resume</a></li>
+          <li><a href="../../contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <script src="../../assets/js/app.js"></script>
+  </body>
+</html>
