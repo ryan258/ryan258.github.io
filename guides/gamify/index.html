@@ -41,18 +41,49 @@
     <div class="row">
     
       <div class="medium-7 large-6 columns">
-        <h1>Development Workflow</h1>
-        <p class="subheader">When you know who you're building what for the system comes together, coherency. The Development Stack will take care of your static site needs and make it seem like you're playing a video game.</p>
+        <h1 class="text-black">Development Workflow</h1>
+        <p class="lead text-black">When you know who you're building what for the system comes together, coherency. The Development Stack will take care of your static site needs and make it seem like you're playing a video game.</p>
         <br>
-        <button class="button">View the Repo</button>
-        <button class="button">Contact for Consulting</button>
+        <!-- <button class="button">View the Repo</button>
+        <button class="button">Contact for Consulting</button> -->
       </div>
     
-      <div class="show-for-large large-3 columns">
+      <!-- <div class="show-for-large large-3 columns">
           <i class="fa fa-cogs fa-5x"></i> + <i class="fa fa-cog fa-5x"></i>
-      </div>
+      </div> -->
     
-      <div class="medium-5 large-3 columns">
+      <div class="medium-5 large-6 columns">
+        <div class="callout">
+          <h2>Overview</h2>
+    <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
+          <!-- <p class="lead">Your Dev Stack</p> -->
+    
+          <!-- <p class="subheader">Essentially what we're going to do here is:</p> -->
+          <ul class="">
+            <li>Install Git and NodeJS</li>
+            <li>Use NodeJS's npm to install ZURB Foundation 6's Command Line Tool</li>
+            <li>Use Foundation's CLI to create a new project</li>
+            <li>Run <code>foundation watch</code> to spin up a live prototyping environment</li>
+            <li>Add a Workspace to Google Chrome</li>
+            <li>Live edit/save in Chrome</li>
+            <li>Host our site using gh-pages</li>
+          </ul></p>
+        </div>
+      </div>
+      <!-- <div class="column">
+        <div class="callout">
+          <p>Background</p>
+          <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
+          <p class="lead">Why does this matter?</p>
+          <p class="subheader">Follow the directions below you'll have:</p>
+          <ul class="subheader">
+            <li>a local web development stack</li>
+            <li>version control</li>
+            <li>free hosting</li>
+          </ul>
+        </div>
+      </div> -->
+      <!-- <div class="medium-5 large-3 columns">
         <div class="callout secondary">
           <form>
             <div class="row">
@@ -70,49 +101,18 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> -->
     
     </div>
     
-    <div class="row column">
-      <hr>
-    </div>
     
-    <div class="row column">
-      <p class="lead">Steps</p>
+    <div class="row column bg-black padding-top padding-bottom--half margin-bottom">
+      <p class="lead">Steps - These steps have only been tested on a Mac OSx Terminal</p>
     </div>
     
     <div class="row small-up-1 medium-up-2 large-up-3">
-      <div class="column">
-        <div class="callout">
-          <p>Background</p>
-    <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
-          <p class="lead">Why does this matter?</p>
-          <p class="subheader">Basically if you follow the directions below you'll have:</p>
-          <ul class="subheader">
-            <li>a local web development stack</li>
-            <li>version control</li>
-            <li>free hosting</li>
-          </ul>
-        </div>
-      </div>
-      <div class="column">
-        <div class="callout">
-          <p>Overview</p>
-    <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
-          <p class="lead">Your Dev Stack</p>
     
-          <p class="subheader">Essentially what we're going to do here is:</p>
-          <ul class="subheader">
-            <li>Install Git and NodeJS</li>
-            <li>Install the ZURB Foundation 6 Stack</li>
-            <li>Spin up our first site</li>
-            <li>Add a Workspace to Google Chrome</li>
-            <li>Live edit/save in Chrome</li>
-            <li>Host our site using gh-pages</li>
-          </ul></p>
-        </div>
-      </div>
+    
       <div class="column">
         <div class="callout">
           <p>Setup</p>
@@ -120,10 +120,11 @@
           <p class="lead">Install Git and NodeJS</p>
           <p class="subheader">Essentially what we're going to do here is:</p>
           <ul>
-            <l1><a href="https://git-scm.com">Download Git<br><small>It's a basic extract/install.</small></a></l1>
+            <li><a href="https://git-scm.com">Download Git<br></a><small>It's a basic extract/install.</small></li>
             <li>Open Terminal</li>
-            <li>To test <code>$ git GUI</code></li>
-            <l1><a href="https://nodejs.org/en/download/">Download NodeJS<br><small>It's a basic extract/install.</small></a></l1>
+            <li>To test run <code>$ git --version</code> and get a version number back.</li>
+            <li><a href="https://nodejs.org/en/download/">Download NodeJS<br></a><small>It's a basic extract/install.</small></li>
+            <li>To test run <code>$ npm -v</code> and get a version number back.</li>
           </ul>
         </div>
       </div>
@@ -131,23 +132,26 @@
         <div class="callout">
           <p>Setup II</p>
     <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
-          <p class="lead">Install the ZURB Foundation 6 Stack</p>
-          <p class="subheader">Essentially what we're going to do here is:</p>
+          <p class="lead">Install the ZURB Foundation 6 CLI</p>
+          <p class="subheader">CLI: Command Line Interface</p>
           <ul>
-            <l1><a href="http://foundation.zurb.com/sites/docs/installation.html">Install Foundation<br><small></small></a></l1>
-            <li>Or install through the CLI with:<br>
-            <code>npm install --global foundation-cli</code></li>
+            <!-- <l1><a href="http://foundation.zurb.com/sites/docs/installation.html">Install Foundation<br><small></small></a></l1> -->
+            <li><code>$ npm install --global foundation-cli</code></li>
           </ul>
         </div>
       </div>
       <div class="column">
         <div class="callout">
-          <p>Launch It</p>
+          <p>Setup III</p>
     <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
-          <p class="lead">Spin up our first site</p>
-          <p class="subheader">Essentially what we're going to do here is:</p>
-          <ul class="subheader">
+          <p class="lead">Create a New Project</p>
+          <p class="subheader">Using the CLI</p>
+          <ul class="">
             <li>With everything installed we can now create a new project with:<br><code>$ foundation new</code></li>
+            <li>Answer the prompts for your project, it's ok to leave somethings blank</li>
+            <li>Move into the newly created project by typing<br><code>$ cd [your_project_dir]</code></li>
+            <li>Run <br><code>$ foundation watch</code></li>
+            <li>You ought to see a dev stack fire up and a browser window open with a Foundation starter page.</li>
           </ul>
         </div>
       </div>
