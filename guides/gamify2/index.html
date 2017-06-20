@@ -41,8 +41,8 @@
     <div class="row">
     
       <div class="medium-7 large-6 columns">
-        <h1 class="text-black">Development Workflow</h1>
-        <p class="lead text-black">When you know who you're building what for the system comes together, coherency. The Development Stack will take care of your static site needs and make it seem like you're playing a video game.</p>
+        <h1 class="text-black">Setup Quick Start</h1>
+        <p class="lead text-black">The goal of this guide is to help you get setup quickly so you can make cool stuff.</p>
         <br>
         <!-- <button class="button">View the Repo</button>
         <button class="button">Contact for Consulting</button> -->
@@ -60,70 +60,66 @@
     
           <!-- <p class="subheader">Essentially what we're going to do here is:</p> -->
           <ul class="">
-            <li>Install Git and NodeJS</li>
-            <li>Use NodeJS's npm to install ZURB Foundation 6's Command Line Tool</li>
+            <li>Install things we need</li>
+            <li>Clone a project from GitHub</li>
+            <li>Use the things we installed to make a website.</li>
+            <!-- <li>Use NodeJS's npm to install ZURB Foundation 6's Command Line Tool</li>
             <li>Use Foundation's CLI to create a new project</li>
             <li>Run <code>foundation watch</code> to spin up a live prototyping environment</li>
             <li>Add a Workspace to Google Chrome</li>
             <li>Live edit/save in Chrome</li>
-            <li>Host our site using gh-pages</li>
-          </ul></p>
-        </div>
-      </div>
-      <!-- <div class="column">
-        <div class="callout">
-          <p>Background</p>
-          <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>
-          <p class="lead">Why does this matter?</p>
-          <p class="subheader">Follow the directions below you'll have:</p>
-          <ul class="subheader">
-            <li>a local web development stack</li>
-            <li>version control</li>
-            <li>free hosting</li>
+            <li>Host our site using gh-pages</li> -->
           </ul>
         </div>
-      </div> -->
-      <!-- <div class="medium-5 large-3 columns">
-        <div class="callout secondary">
-          <form>
-            <div class="row">
-              <div class="small-12 columns">
-                <label>Email
-                  <input type="text" placeholder="Enter Email Here">
-                </label>
-              </div>
-              <div class="small-12 columns">
-                <label>Number of Moons
-                  <input type="number" placeholder="Moons required">
-                </label>
-                <button type="submit" class="button">Sign up for the Newsletter!</button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div> -->
-    
+      </div>
     </div>
     
     
     <div class="row column bg-black padding-top padding-bottom--half margin-bottom">
-      <p class="lead">Steps - These steps have only been tested on a Mac OSx Terminal</p>
+      <p class="lead text-center">These steps have only been tested on a Mac OSx Terminal</p>
     </div>
     
     <div class="row small-up-1 medium-up-2 large-up-3">
-    
-    
       <div class="column">
         <div class="callout">
-          <p>Setup</p>
-    <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
-          <p class="lead">Install Git and NodeJS</p>
-          <p class="subheader">Essentially what we're going to do here is:</p>
+          <p class="lead">Install Atom Editor</p>
+          <p class="subheader">This will be the program we use to edit files.</p>
+          <ul>
+            <li><a href="https://atom.io">Download Atom<br></a><small>It's a basic extract/install.</small></li>
+            <li>Open the terminal</li>
+            <li>Type $ <code>atom .</code> to open the editor</li>
+          </ul>
+        </div>
+      </div>
+      <div class="column">
+        <div class="callout">
+          <p class="lead">Install the Emmet plugin for Atom</p>
+          <p class="subheader">This will make writing HTML so much faster.</p>
+          <ul>
+            <li>In the menu bar navigate to <strong>Atom > Preferences</strong></li>
+            <li>Click + Install</li>
+            <li>Type emmet in the search</li>
+            <li>Click Install button for emmet 2.4.x</li>
+          </ul>
+        </div>
+      </div>
+      <div class="column">
+        <div class="callout">
+          <p class="lead">Install Git</p>
+          <p class="subheader">This will allow you to access projects on GitHub and provide version control.</p>
           <ul>
             <li><a href="https://git-scm.com">Download Git<br></a><small>It's a basic extract/install.</small></li>
             <li>Open Terminal</li>
             <li>To test run <code>$ git --version</code> and get a version number back.</li>
             <li><a href="https://git-scm.com/book/en/v2/GitHub-Account-Setup-and-Configuration" target="_blank">Setup your Account</a> on <a href="https://github.com" target="_blank">GitHub</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="column">
+        <div class="callout">
+          <p class="lead">Install NodeJS and npm</p>
+          <p class="subheader">These will help you install dependencies that the project relies on.</p>
+          <ul>
             <li><a href="https://nodejs.org/en/download/">Download NodeJS<br></a><small>It's a basic extract/install.</small></li>
             <li>To test run <code>$ npm -v</code> and get a version number back.</li>
           </ul>
@@ -131,8 +127,22 @@
       </div>
       <div class="column">
         <div class="callout">
-          <p>Setup II</p>
-    <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
+          <p class="lead">Install Bower with NPM</p>
+          <p class="subheader">This will help us download bundles of code that <strong>our project</strong> will depend on.</p>
+          <ul>
+            <li><code>$ npm install -g bower</code></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row column bg-black padding-top padding-bottom--half margin-bottom">
+      <p class="lead text-center">Now it's time for the fun stuff! Demo time!</p>
+    </div>
+    
+    <div class="row small-up-1 medium-up-2 large-up-4">
+      <div class="column">
+        <div class="callout">
           <p class="lead">Install the ZURB Foundation 6 CLI</p>
           <p class="subheader">CLI: Command Line Interface</p>
           <ul>
@@ -143,23 +153,47 @@
       </div>
       <div class="column">
         <div class="callout">
-          <p>Setup III</p>
-    <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
           <p class="lead">Create a New Project</p>
           <p class="subheader">Using the CLI</p>
           <ul class="">
             <li>With everything installed we can now create a new project with:<br><code>$ foundation new</code></li>
             <li>Answer the prompts for your project, it's ok to leave somethings blank</li>
-            <li>Move into the newly created project by typing<br><code>$ cd [your_project_dir]</code></li>
-            <li>Run <br><code>$ foundation watch</code></li>
-            <li>You ought to see a dev stack fire up and a browser window open with a Foundation starter page.</li>
           </ul>
         </div>
       </div>
       <div class="column">
         <div class="callout">
+          <p class="lead">Move to your new project directory.</p>
+          <p class="subheader"><code>cd</code>: change directory</p>
+          <ul>
+    
+            <li>Move into the newly created project by typing<br><code>$ cd [your_project_dir]</code></li>
+    
+          </ul>
+        </div>
+      </div>
+      <div class="column">
+        <div class="callout">
+          <p class="lead">Fire it up</p>
+          <p class="subheader">Watch statements wait for changes and react by running tasks.</p>
+          <ul>
+            <li>Run <br><code>$ foundation watch</code></li>
+            <li>You ought to see a dev stack fire up and a browser window open with a Foundation starter page.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row column bg-black padding-top padding-bottom--half margin-bottom">
+      <p class="lead text-center">Set up live editing in Chrome.</p>
+    </div>
+    
+    <!-- <div class="row small-up-1 medium-up-2 large-up-4">
+    
+    
+      <div class="column">
+        <div class="callout">
           <p>Google Workspaces</p>
-    <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
           <p class="lead">Add a Workspace to Google Chrome</p>
           <p class="subheader">In Google Chrome</p>
           <ul class="subheader">
@@ -174,7 +208,6 @@
       <div class="column">
         <div class="callout">
           <p>Edit Live!</p>
-    <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
           <p class="lead">Live edit/save in Chrome</p>
           <p class="subheader">Essentially what we're going to do here is:</p>
           <ul class="subheader">
@@ -188,7 +221,6 @@
       <div class="column">
         <div class="callout">
           <p>GitHub Account</p>
-    <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
           <p class="lead">Create a GitHub account:</p>
           <p class="subheader">Essentially what we're going to do here is:</p>
           <ul>
@@ -199,7 +231,6 @@
       <div class="column">
         <div class="callout">
           <p>Free Hosting</p>
-    <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
           <p class="lead">Host our site using gh-pages</p>
           <p class="subheader">Git isn't just about getting things, it great for version control, but it can also host your site!</p>
           <ul class="subheader">
@@ -220,7 +251,6 @@
       <div class="column">
         <div class="callout">
           <p>Recap</p>
-    <!--       <p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p> -->
           <p class="lead">Now you have a workflow!</p>
           <p class="subheader">The quick and dirty steps:</p>
           <ul class="subheader">
@@ -239,7 +269,7 @@
         </div>
       </div>
     
-    </div>
+    </div> -->
     
     <!-- <div class="row column">
       <a class="button hollow expanded">Load More</a>
