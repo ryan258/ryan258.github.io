@@ -1,0 +1,332 @@
+<div class="grid-container">
+  <div class="grid-x grid-margin-x">
+    <div class="cell large-12">
+      <h1>Complete Angular5 Course</h1>
+      <p class="lead">
+        <a href="https://www.udemy.com/the-complete-guide-to-angular-2/learn/v4">Course Link</a>
+      </p>
+      <p class="lead">Things to remember:</p>
+      <ul>
+        <li>Angular in the end is a JS framework, changing your DOM ('HTML') at runtime</li>
+        <li>Cunstructor is called at the tome this component is called by angular</li>
+      </ul>
+      <h2>Angular CLI</h2>
+      <p>a great tool for big and very big Angular projects! It allows you to focus on Angular code instead of workflow tasks!</p>
+      <ol>
+        <li>Make an app w/ the cli
+          <br>
+          <code>$ ng new my-first-app</code>
+        </li>
+        <li>
+          <code>$ cd my-first-app</code>
+        </li>
+        <li>Run the server
+          <br>
+          <code>$ ng serve</code>
+        </li>
+      </ol>
+      <h2>Two-way Data-Binding</h2>
+      <ol>
+        <li>Add a model to the form element and point it (name) - a property in our component.ts
+          <br>
+          <code>[(ngModel)]="name"</code>
+        </li>
+        <li>Update our export class with a name variable
+          <br>
+          <code>name = '';</code>
+        </li>
+        <li>Then in an element we'll complete the circuit
+          <br> In a p tag
+          <code>
+            \{\{ name \}\}
+          </code>
+        </li>
+        <li>In app.component.html - add the FormsModule below BrowserModule w/ an import at the top
+          <br>
+          <code>import { FormsModule } from '@angular/forms';</code>
+        </li>
+      </ol>
+      <h2>What is TypeScript</h2>
+      <p class="lead">>>> Introduce the starting point for working along on this courses' projects</p>
+      <h2>Install Bootstrap Theme!</h2>
+      <ol>
+        <li>
+          <code>$ npm install --save bootstrap</code>
+        </li>
+        <li>In the
+          <strong>.angular-cli.json</strong> add to the "styles" array
+          <br>
+          <code>"../node_modules/bootstrap/dist/css/bootstrap.min.css",</code>
+        </li>
+        <li>restart server</li>
+      </ol>
+      <h1>The Basics</h1>
+      <h2>Intro to Modules</h2>
+      <h2>How an Angular App Gets Loaded and Started</h2>
+      <h3>The app.component.*</h3>
+      <p>The 4 below are all related to the same component</p>
+      <ul>
+        <li>.css - styles specifically for this component</li>
+        <li>.html - template file - basically the start up</li>
+        <li>.spec - </li>
+        <li>.ts -
+          <ul>
+            <li></li>
+            <li>We have the @Component decorator</li>
+          </ul>
+        </li>
+      </ul>
+      <p>The page that gets served is the
+        <strong>src/index.html</strong> the single page in a SPA. app-route is the custom component element
+      </p>
+      <p>You'll see the action happen in the dev tools where a bunch of scripts are being called - scripts are the first to
+        be executed</p>
+      <h3>main.ts is the first to get called</h3>
+      <p>
+        <code>platformBrowserDynamic().bootstrapModule(AppModule);</code>
+        <br>Essentially starts our application</p>
+      <p>then we find ourselves in the
+        <strong>aoo.module.ts</strong> folder</p>
+      <h3>then app.modules.ts get's called</h3>
+      <p>where we tell it there's a component when you fire up
+
+      </p>
+      <h3>the app.component.ts is called</h3>
+      <p>then the .html template and .css are called</p>
+      <h2>Components are Important!</h2>
+      <p class="lead">You build your whole application using components.</p>
+      <ol>
+        <li>You start w/ your app (aka root) component - holds the entire application base</li>
+      </ol>
+      <p>Allows you to split up your application into reusable parts,
+        <strong>so you can easily replicate that business logic</strong>
+      </p>
+      <h2>Creating a New Component</h2>
+      <p>(In app.module.ts) AppComponent is serving as our root component</p>
+      <ol>
+        <li>in /app/ create a folder w/ the name of the new component</li>
+        <li>inside add [component_name].component.ts -
+          <br>since a component is just a typescript class that hides the class so that Angular is able to instantiate it, to
+          create objects based on the blueprint we set up</li>
+        <li>add the export class</li>
+        <li>add a decorator to enhances your classes - which requires you to import Component</li>
+        <li>To use it we need to add it to app.module.ts, which tells us what features the app has to use</li>
+      </ol>
+      <h2>Understanding the Role of AppModule and Component Declarations</h2>
+      <ol>
+        <li>you import the component at the top</li>
+        <li>@NgModule - you have to tell Angular things exist
+          <ul>
+            <li>declarations - register new components here </li>
+            <li>imports</li>
+            <li>providers</li>
+            <li>bootstrap - what component needs to run when the app starts?</li>
+          </ul>
+        </li>
+      </ol>
+      <h2>Using Custom Compoents</h2>
+      <ol>
+        <li>In another ,html file of a component you can add placeholders w/ curly braces</li>
+      </ol>
+      <h2>Creating Components w/ the CLI & Nesting Components</h2>
+      <ol>
+        <li>CLI - create a new component
+          <br>
+          <code>$ ng generate component [component_name]</code>
+          <br> or for short
+          <code>
+            <code>$ ng g c [component_name]</code>
+          </code>
+        </li>
+      </ol>
+      <p>User the app-server in the app-servers template :)</p>
+      <h2>Working w/ Custom Templates</h2>
+      <ul>
+        <li>You must always have a template w/ your component</li>
+        <li>You can always change the templateUrl to template, use backticks, and template out your component there</li>
+      </ul>
+      <h2>Working w/ Component Styles</h2>
+      <p>same</p>
+      <h2>Fully Understanding the Component Selector</h2>
+      <p>You can select it like typical css - selecting by ID doesn't work</p>
+      <h2>What is Databinding</h2>
+      <p class="lead">It's communication, between your types of code, your business logic, and the template</p>
+      <ul>
+        <li>For logic to template we can use
+          <ul>
+            <li>String interpolation - in the end whatever goes in must be a string</li>
+            <li>Property binding - [property]="date"</li>
+          </ul>
+        </li>
+        <li>React to a user event (template to business logic)
+          <ul>
+            <li>Event Binding - (event)="expression"</li>
+          </ul>
+        </li>
+        <li>Or combine them both ways w/
+          <strong>two-way-binding</strong> - [(ngModel)]="data"
+        </li>
+      </ul>
+      <h2>String Interpolation</h2>
+      <p>in the end whatever goes in must be a string</p>
+      <h2>Property Binding</h2>
+      <ol>
+        <li>create a false variable to toggle</li>
+      </ol>
+      <h2>Property Binding vs String Interpolation</h2>
+      <p class="lead">Don't mix the two!</p>
+      <h2>Event Binding</h2>
+      <ol>
+        <li>Add a method to your component's export class</li>
+        <li>Add a listener on an element in the template</li>
+      </ol>
+      <h2>Bindable Properties and Events</h2>
+      <p>How do you know to which Properties or Events of HTML Elements you may bind? You can basically bind to all Properties
+        and Events - a good idea is to console.log() the element you're interested in to see which properties and events
+        it offers.</p>
+      <p>Important: For events, you don't bind to onclick but only to click (=> (click)).</p>
+      <p>The MDN (Mozilla Developer Network) offers nice lists of all properties and events of the element you're interested
+        in. Googling for YOUR_ELEMENT properties or YOUR_ELEMENT events should yield nice results.</p>
+      <h2>Passing and Using Data w/ Event Binding</h2>
+      <ul>
+        <li>
+          <strong>$event</strong> - it's like a reserved variable name</li>
+        <li>You can use it in the template when using event binding for this eveny so only btw the quotation marks</li>
+        <li>Will simply be the data emitted w/ that event</li>
+      </ul>
+      <h2>2 way Databinding</h2>
+      <ul>
+        <li>nice easy way for data to be pushed down and binded up</li>
+      </ul>
+      <h2>!important - FormsModule is Required for 2-way Data Binding!</h2>
+      <p>Important: For Two-Way-Binding to work, you need to enable the ngModel directive. This is done by adding the FormsModule
+        to the imports[] array in the AppModule.</p>
+      <p>You then also need to add the import from @angular/forms in the app.module.ts file:</p>
+      <p>import { FormsModule } from '@angular/forms'; </p>
+      <h2>Combining All Forms of Databinding</h2>
+      <p>neato </p>
+      <h2>Understanding Direvtives</h2>
+      <p class="lead">Directives are instructions in the DOM</p>
+      <ul>
+        <li>We typically add directives w/ an attribute selector</li>
+      </ul>
+      <h2>Using *ngif to Output data conditionally</h2>
+      <p>* is required because it's a structural event</p>
+      <p>takes element in and out of dom - most used option</p>
+      <h2>Enhancing ngif w/ else condition</h2>
+      <p class="lead">It's an attribute directive no adding or removing elements, just affects to the element</p>
+      <h2>Styling elements dynamically w/ ngStyle</h2>
+      <h2>Applying CSS classes dynamically w/ ngClass</h2>
+      <h2>Outputting lists w/ ngFor</h2>
+      <h2>Getting the Index when Using ngFor</h2>
+      <h1>Course Project - Section 3 - The Basics</h1>
+      <h2>Planning the App</h2>
+      <p class="lead">First Step</p>
+      <ul>
+        <li>Identify Features (sections)</li>
+        <li>Which components will we need for this</li>
+        <li>app example
+          <ul>
+            <li>root "app" component - to hold our overall application</li>
+            <li>header - to navigate between sections</li>
+          </ul>
+        </li>
+        <li>figure the components needed for each section</li>
+        <li>Recipe Book example
+          <ul>
+            <li>Recipe List</li>
+            <li>Recipe Item</li>
+            <li>Recipe Detail</li>
+            <li>
+              <em>Recipe</em> - data model</li>
+          </ul>
+        </li>
+        <li>Decide on which models (data) we want to use in this app
+          <br>
+          <em>and put it in it's own class so you have a clear interface/definition of what your data looks like so things can
+            talk to eachother</em>
+        </li>
+        <li>Shopping List Section example
+          <ul>
+            <li>Shopping List</li>
+            <li>Shopping List Edit</li>
+            <li>
+              <em>ingredient</em> - data model
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Setting up the app.</h2>
+      <p class="lead">Add Bootstrap</p>
+      <h2>Make the Components!</h2>
+      <p>make sure to register them all in the app.module.ts</p>
+      <p>Go nuts with the
+        <br>
+        <code>$ ng g c [component_name]</code>
+        <br>like
+        <ul>
+          <li>
+            <code>$ ng g c recipes</code>
+            <br> optionally --spec false, tells it not to bother making a testing file
+          </li>
+          <li>
+            <code>$ ng g c recipes/recipes-list</code>
+            <br>this will nest the component in the recipes folder
+          </li>
+        </ul>
+      </p>
+      <h3>Making Models</h3>
+      <p class="lead">They're just blueprints for the objects that we want to crete</p>
+      <h1>Debuggin</h1>
+      <p class="lead">Use Augery (Chrome Dev Tools extension)</p>
+      <h1>Components & Databinding Deep Dive</h1>
+      <h2>Splitting Apps into Components</h2>
+      <ul>
+        <li>Create new component shells w/ the command line</li>
+        <li>Take the html and put it into the component template</li>
+        <li>You must also move the methods for that component to the new .ts
+          <br>
+          <span class="lead">in the export class</span>
+        </li>
+        <li>Place the new custom elements in the template</li>
+      </ul>
+      <h2>Property & Event Binding</h2>
+      <p class="lead">We pass information, even to our own Components (Custom properties & Events)</p>
+      <ul>
+        <li>tell the parent that there was a change in the child</li>
+        <li>then we need to get the data from the cockpit -> parent, down to the sibling, server element</li>
+      </ul>
+      <h2>Binding to Custom Property Bindings</h2>
+      <ul>
+        <li>by default all properties are limited to their component
+          <br>so expose it w/ a decorator
+          <strong>@Input()</strong>
+        </li>
+      </ul>
+      <h2>Binding to Custom Events</h2>
+      <ul>
+        <li>use eventEmitter</li>
+      </ul>
+      <h2>Understanding View Encapsulation</h2>
+      <p class="lead">You can also override encapsulation in the component decorator w/ encapsulation:</p>
+      <h2>Using local references in Templates</h2>
+      <p class="lead">Local references are a nice feature to get access to some elements in your template and tehn use it either directing
+        in the template or pass it along to be used in the typescript code</p>
+      <ul>
+        <li>You can only use them in the template</li>
+      </ul>
+      <h2>Getting Access to the Template & DOM w/ @ViewChild</h2>
+      <ul>
+        <li>do not change the element through this approach, there are better ways of accessing the DOM - like property binding
+          or string interpolation</li>
+      </ul>
+      <h2>Projecting Content into Components w/ ng-content</h2>
+      <h2>Understanding the Component Lifecycle</h2>
+
+      <h2>Seeing Lifecycle Hooks in Action</h2>
+      <h2>Lifecycle Hooks and Template Access</h2>
+      <h2>Getting Access to ng-content w/ @ContentChild</h2>
+      <h2>Wrap up - Assignment 4</h2>
+    </div>
+  </div>
+</div>

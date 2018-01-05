@@ -1,0 +1,199 @@
+<div class="grid-container">
+  <div class="grid-x grid-margin-x">
+    <div class="cell large-12">
+      <h1>Learning React VR</h1>
+      <h2>Intro</h2>
+      <h3>Welcome</h3>
+      <h3>What You Should Know</h3>
+      <ul>
+        <li>some experience w/ React is a must - React Concepts
+          <p>Must have experience developing w/ React and know about components, it's structure, props, and state.</p>
+        </li>
+        <li>React Native - Some experience will help, but not required</li>
+        <li>Javascript - using ES6</li>
+        <li>Terminal and npm - have npm installed</li>
+        <li>Mac or Windows - no problem ++ would be Samsung Gear Headset and VS Code</li>
+        <li>3d or WebGL - Not a requirement, but will be helpful</li>
+      </ul>
+      <h3>Using Exercise Files</h3>
+      <h2>Setting Up</h2>
+      <h3>Intro to React VR</h3>
+      <h3>Testing w/ Your Browser</h3>
+      <p>no tools needed</p>
+      <ul>
+        <li>chrome</li>
+        <li>firefox</li>
+        <li>safari</li>
+        <li>
+          <a href="https://webvr.rocks">webvr.rocks</a> for more information</li>
+      </ul>
+      <h3>VR Content on the Web for Inspiration</h3>
+      <ul>
+        <li>
+          <a href="https://goo.gl/Dmd3MQ">Dubai360</a>
+        </li>
+        <li>
+          <a href="http://vr.britishmuseum.org">vr.britishmuseum.org</a>
+        </li>
+      </ul>
+      <h3>Initialization of a Project</h3>
+      <ol>
+        <li>Install nodejs to get npm</li>
+        <li>Get the CLI
+          <br>
+          <code>$ npm install -g react-vr-cli</code>
+        </li>
+        <li>Create a new project
+          <br>
+          <code>$ react-vr init [project name]</code>
+        </li>
+        <li>
+          <code>$ cd [project_name]</code>
+        </li>
+        <li>
+          <code>yarn start</code>
+        </li>
+      </ol>
+      <p>Hello world!</p>
+      <h3>Testing Your Gear VR Headset</h3>
+      <ul>
+        <li>First we need to figure out what our ip address is so we can access it (must be on the same network):
+          <br> (Apple > About this Mac > System Report > Network > Locations)
+          <code>$ ipconfig getifaddr [BSD Device Name]</code>
+          <br>It'll give us the ip address to copy/paste
+        </li>
+        <li>replace the 'localhost' with that copied IP address</li>
+      </ul>
+      <p>and that's how you connect a mobile device for VR</p>
+      <p>Enter it into the URL field in the VR-scape</p>
+      <h2>Overview of React VR Basics</h2>
+      <h3>Project Structure</h3>
+      <ul>
+        <li>index.vr.js - is always the entry point
+          <ul>
+            <li>pano - you see the bg image 460</li>
+            <li>text - style and content</li>
+            <li>/vr/ - where we do our business</li>
+            <li>.flowconfig - for type checking</li>
+          </ul>
+        </li>
+      </ul>
+      <p>We'll want to:</p>
+      <ol>
+        <li>Create a src/ folder - where we create our new components, then we'll call them from the index.vr.js</li>
+      </ol>
+      <h3>React Concepts w/ React VR</h3>
+      <p>These Still Apply:</p>
+      <ul>
+        <li>Components</li>
+        <li>State</li>
+        <li>Props</li>
+        <li>React/Redux Router</li>
+        <li>React Native as its Basis</li>
+      </ul>
+      <h3>3D Coordinates and Transforms</h3>
+      <h4>3d Axis</h4>
+      <ul>
+        <li>OpenGL 3D Coordinate System</li>
+        <li>Any component can be placed in 3D space</li>
+        <li>Y axis points p, not down</li>
+        <li>Use meters for distance and dimensions</li>
+        <li>use degrees for rotation</li>
+      </ul>
+      <h4>Transforms - position items in the code</h4>
+      <ul>
+        <li>Extends the React transforms to be 3d</li>
+        <li>Array of objects within a style</li>
+        <li>Each object - command, properties</li>
+        <li>Examp - scale 0.5</li>
+      </ul>
+
+      <h3>React VR Components Overview</h3>
+      <h4>Core - similar to React Native</h4>
+      <ul>
+        <li>View</li>
+        <li>Image</li>
+        <li>Text</li>
+      </ul>
+      <p>Pano</p>
+      <ul>
+        <li>360' panoramic background</li>
+        <li>Any 360' picture will work - video is a different Pano</li>
+
+      </ul>
+      <p>Model</p>
+      <ul>
+        <li>Source object takes:
+          <ul>
+            <li>Material prop</li>
+            <li>Texture prop</li>
+            <li>Light prop</li>
+          </ul>
+        </li>
+      </ul>
+      <h4>Lights</h4>
+      <ul>
+        <li>Point Lights
+          <ul>
+            <li>Start at a single point and speads in all directions</li>
+          </ul>
+        </li>
+        <li>Ambient Light
+          <ul>
+            <li>Has no single point of origin and affects all objects</li>
+          </ul>
+        </li>
+        <li>Directional lights
+          <ul>
+            <li>Affects objects from a specific direction</li>
+          </ul>
+        </li>
+        <li>Spotlight
+          <ul>
+            <li>is cone shaped and focused</li>
+          </ul>
+        </li>
+        <li>there are shit tons more
+          <ul>
+            <li>AmbientLight</li>
+            <li>PointLight</li>
+            <li>DirectionalLight</li>
+            <li>Plane</li>
+            <li>LiveEndCamera</li>
+            <li>Box</li>
+            <li>VideoPiano</li>
+            <li>VrButton</li>
+            <li>CylindricalPanel</li>
+            <li>Model</li>
+            <li>Scene</li>
+            <li>Video</li>
+            <li>Cylinder</li>
+            <li>Pano</li>
+            <li>Sound</li>
+            <li>Sphere</li>
+            <li>VideoControl</li>
+            <li>Spotlight</li>
+          </ul>
+        </li>
+      </ul>
+      <p>
+        <code>onLoad={}</code> is JS that runswhen the image is successfully loaded and
+        <code>onLoadEnd={}</code> will just run, like a fallback on fail</p>
+      <h2>Build Our VR Components</h2>
+      <p class="lead">For more
+        <a href="https://goo.gl/SHf3Rx">see this</a> - Starting points for building complex shapes in 3d
+      </p>
+
+      <h3>Add a 360' Background w/ Patio</h3>
+      <h3>Add Primitive Components to the Scene</h3>
+      <ul>
+        <li>You always need to import the View into a component, because it's the required entry point</li>
+      </ul>
+      <h3>Add 3D Models to the Scene</h3>
+      <h3>Add Sound in 3D Space</h3>
+      <h3>Add VrButton for Interactivity</h3>
+      <h3>Change State and Environment w/ Button</h3>
+      <h2>Conclusion - Next Steps</h2>
+    </div>
+  </div>
+</div>

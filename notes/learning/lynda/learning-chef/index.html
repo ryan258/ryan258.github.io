@@ -1,0 +1,401 @@
+<div class="grid-container">
+  <div class="grid-x grid-margin-x">
+    <div class="cell">
+      <h1>Learning Chef</h1>
+
+      <h2>Introduction</h2>
+      <h3>Welcome</h3>
+
+      - [Instructor] Have you ever provisioned an application server from the ground up? Installing packages, configuring them, and starting services manually can be an enormous time investment and doesn't scale as your application grows. If you've written a script before, you're probably aware the benefit of automating configuration tasks. Can you imagine the benefits of automating the entire process, of building thousands of servers from the ground up? Hi, my name is Robin Beck, and I'm the lead instructor for TechnoTrainer, Chef's primary global training partner.
+      
+      In this introductory course, we'll explore the fundamentals of Chef, an automation platform that can revolutionize the way you do DevOps. We'll talk about the fundamental components of the platform, such as describing configuration tasks with resources, recipes, and cookbooks. We'll also learn how to distribute those changes to one or a thousand notes using a Chef server. Chef can automate how you build, deploy, and manage your infrastructure, and integrates closely with Cloud-based platforms, like Microsoft Azure and Amazon Web Services, to provision and configure new machines.
+      
+      Chef is a comprehensive platform that involves many working pieces moving together to bring your infrastructure to life. There's a wealth of information to explore, so let's dive in.
+      
+      
+
+      <h3>What You Should Know</h3>
+
+      - [Instructor] The Learning Chef course is designed to provide an overview of the Chef platform, especially the tooling and the Chef development kit used for developing and testing Chef recipes and cookbooks. This introductory course will familiarize you with the context of configuration management that Chef fits within and provide you with an understanding of the core components of the platform. You should know that this class is intended to be an overview. I'll expect you to be familiar with concepts like provisioning application or database servers, working with Cloud instances and virtual machines, the fundamentals of DevOps, Linux system administration, such as installing packages, configuring them, and managing services, and also basic protocols like SSH, TCP, networking principles, and some basic HTML.
+      
+      In this class, we'll be talking about using Chef to automate the process of building, deploying, and managing your infrastructure. You should know this can be done with virtually any platform whether it's Unix-based, Linux-based, Solaris, or Windows. This class is going to focus on the Linux architecture behind managing a CentOS system. While the principles will still hold for any other architecture, I do expect you to have a basic understanding of working your way around the Bash terminal, such as opening, editing files, and saving them.
+      
+      I'll also expect you to be familiar with running command line tools. Chef, in and of itself, does use the Ruby language to express solutions to common problems, but I want you to be aware that a deep understanding of Ruby is not required to learn Chef. I do not expect you to have any previous Ruby experience to take this course. I want you to know that learning Chef is like learning a language though, be it a programming language or a spoken language. We'll learn the basics very fast, but you'll have to keep practicing until you become fluent.
+      
+      A great way to learn Chef is to use Chef.
+      
+      
+
+
+      <h3>My Lab Environment</h3>
+
+      - [Instructor] I want to introduce you to my lab environment you'll see me demonstrating in this class. For this Chef course, I'll be demonstrating two separate architectures. Initially I'll be using a virtual workstation to demonstrate the power of using Chef right away. Later on, I'll demonstrate using more of a common production architecture that includes a Chef Server. For our first architecture we'll actually be using a virtual workstation that's configured with the Chef Tools.
+      
+      I'll be setting this up with Vagrant and VirtualBox. Later in this course you'll see me demonstrating a second, more production-like architecture. This will involve using a Chef Server to manage many different servers that we will call nodes. There are many ways to set up a Chef development environment. But again, in this class I'm going to get started with Vagrant and VirtualBox. If you'd like to follow along, you will need these tools configured on your personal machines.
+      
+      Inside of this virtual machine, I'll be installing the Chef development kit. And also a text editor, like Vim, Emacs, or Nano to edit basic files. Once we move towards our production architecture we'll be working with a Chef Server. And this is designed to be able to manage nodes that are provisioned by any means possible. This means a Chef Server could actually control virtual machines, Docker containers, cloud instances, or even a bare metal machine.
+      
+      In this class, for my production environment, I'll be managing Centos-based nodes that I'll provision with AWS. This course is intended to demonstrate the power of the Chef platform. And therefore is focused on the Chef architecture and not the complexities of managing instances with a cloud provider like Amazon web services or Microsoft Azure. You're welcome to follow along with the course exercises, but please understand that they are intended more as a demonstration of the platform rather than a step-by-step guide.
+      
+      Further resources will be provided at the end of class for self-study, so you can practice everything that I've demoed at your own pace. If you have access to the exercise files for the class, you can download them and follow along. Inside of the exercise files folder, there will be a folder for each chapter. Inside of each chapter folder will be a folder for each video. Here you will find both a begin state and an end state for each of the exercise files, so that you can check your work as you go along.
+      
+      
+
+
+      <h2>Getting Started with Chef</h2>
+      <h3>What is Configuration Management?</h3>
+
+      - [Instructor] Before we talk about Chef, it's important to understand where it fits in the overall context of configuration management. Configuration management, or CM, refers to the process of maintaining consistency over the course of a product's lifetime. In terms of software development, we're referring to server configuration management. This is where we can manage the integrity of the state of a computer system and the applications that run on it.
+      
+      Programmatic techniques are applied to maintain consistency in an application throughout its lifecycle. Performance is usually evaluated through a testing framework of some kind that verifies deployments before they reach a production server. Typically, a CM tool allows for pre-configured and reusable code for infrastructure management, very similar to application development. The results of applying these techniques to infrastructure and application development have resulted in an enormous amount of cost avoidance, catastrophic event prevention, and time savings.
+      
+      By the end of this course, I hope you'll be able to see why. A good CM tool allows for code reuse and templating amongst servers that share the same configuration. For example, a database configuration should be deployable on any server the code was designed for. A database template might provide instructions for provisioning the server using a Cloud provider of choice, installing the database and configuring it with details like usernames, passwords, and the proper permissions for accessibility to other infrastructure components like web servers.
+      
+      To understand how much configuration management has changed the landscape of infrastructure, it's helpful to look at some examples such as deploying an Apache or an IIS web server. Here is an example of a generic template for a web server, Apache web server, written using Chef resources, which we'll discuss later. For now, don't worry if you've never seen or used Ruby before. Just take a look at the code and see if you can understand what it's doing.
+      
+      You can see that the first block of code contains instructions for installing an Apache web server package called HTTPD. The second block then configures the HTTPD package to serve a basic Hello World application by creating an index.html page. This page will then be served to the web when the Apache service is started in the third block of code. Now, that code you just looked at is an example of a reusable template that could be deployed to one or thousands of servers.
+      
+      A good CM tool will enforce the same configuration and ensure that there are no quote unquote snowflakes or unique servers that stray from the desired state that you defined in that block of code. Because these templates are written using languages that many developers are already familiar with, such as Ruby, there's a lot of programmatic flexibility that developers have with code reuse. This means that variables can be used inside of your infrastructure code to provide generic sets of instructions that any server can apply even though host specific details like differing IP addresses or host names will be present.
+      
+      A practical use case for this might be storing the username and password for a database in a variable. This variable can then be called by your infrastructure template, which can easily be modified if, for example, the deployment environment were to change. Here, you see that variables are then referenced inside of our infrastructure code instead of those hard coded values, so that we only have to change the value of a template variable in one location.
+      
+      The example you see here would involve rendering the username and password inside of the configuration file using a variable. Again, if you don't understand the code on the screen yet, don't worry. Just want you to get a sense of what you can plan to see throughout this course. Can you see how using templates instead of hard coding values will allow us to easily propagate changes throughout our code? This type of functionality is critical for a functional DevOps team and that's why configuration management has really taken the world by storm.      
+
+
+      <h3>Configuration Management Platforms</h3>
+
+      - [Male Voiceover] There are a lot of big players in the Configuration Management world, but a few of the most heavily adopted tools are Puppet, Chef, RightScale, Ansible, Salt, and CFEngine. While the DIY approach is still heavily employed, CM Tools are particularly valuable in maintaining consistency across a scaleable deployment which has encouraged a heavy adaption of CM tools over the last decade or so. It's very important to understand the difference between using a configuration management tool and traditional scripting.
+      
+      While CM is essentially a more robust form of running a configuration script, it has the added benefit of ensuring that the execution of a script only modifies system resources when they are not already in the desired state. This concept is called idempotence. It ensures that implying the same script over and over always results in the same configuration. If the configuration has already been applied, the script will not be run.
+      
+      For example: if the Apache package has already been installed, a good CM tool will not attempt to reinstall it every time the script runs. Idempotence scripts are important because we can enforce a desired configuration and prevent drift over time. If an unauthorized change were made to a server an idempotence script will ensure that the server adheres to the policy that you have defined. Ideally, scripts will be run on some sort of regular basis to ensure that the server is in the desired state.
+      
+      So where does Chef fit into all of this? To get started with Chef, some basic Ruby knowledge is required. Fortunately, there are a lot of valuable community resources and code to help anyone get started using the platform. Because of it's flexibility and scale-ability, Chef has a significant enterprise adoption rate. One of the beautiful things about Chef, and other good CM tools, are their compatibility with virtually any cloud provider. Such as Google Compute Engine, Microsoft Azure or Amazon Web Services.
+      
+      Chef can also interface with any sort of on premise datacenter if needed. It's particularly flexible with cloud deployments which are increasingly popular as they allow for renting of computer power for low cost and no commitment. When combined with the cloud's API, magical things can happen. Such as automatic Auto Scaling of applications servers that might be configured using Chef resources. Now, before we jump into talking about Chef, it's also important to understand the concept of infrastructure as code and how Chef is, at heart, a DevOps platform.
+      
+      
+
+
+      <h3>What is Chef?</h3>
+
+      - [Narrator] With a basic understanding of configuration management principles, we're now ready to talk about how Chef describes your infrastructure as code. Chef as a platform allows you to manage any server component. We describe these server components, such as packages, files, services, users, and groups, as system resources. These system resources are going to be represented as code components. Because we're able to represent infrastructure configurations as code, our infrastructure itself becomes versionable, testable, and repeatable.
+      
+      I want to give you an overview of some of the components we'll be working with in this class. We should understand the Workstation, the Chef Server, and any of its managed nodes. Looking at an overview of the Chef Architecture, essentially, I want you to understand that a Workstation is where we'll actually be developing and testing our Chef code. Later on in the class, we'll be working with a Chef Server. We will upload all of our code to the Chef Server.
+      
+      It will store all of our Chef code and then distribute it to any various managed nodes. Nodes themselves are what run our Chef code. So, let's look at an overview of each of these components. The Workstation, again, is where you will develop and test your code. Essentially, the Workstation is going to be configured with all the command-line Chef tools you might need to get started developing Chef code.
+      
+      This is where we'll author and test our recipes and cookbooks for Chef. And we can interact with the Chef Server and managed nodes from a Workstation. We'll set up a Workstation in a moment, but essentially, all you have to do is install the Chef Development Kit. The Chef Server itself is going to be a hub for all of our policy that describes how we should configure our infrastructure. It's going to store some of the topics we'll talk about in this class: cookbooks, roles, environments, and some other policies themselves that you might need to configure your nodes.
+      
+      Essentially, it can index information about your nodes as metadata, and it acts as a pull server for all of your nodes. It will store all of our policy, and all of our nodes will pull it from the Chef Server. In principle, this means that all of the nodes, the Chef Server clients, actually configure themselves, meaning that the nodes do all the heavy lifting. This makes the Chef Server highly scalable.
+      
+      If the term node is confusing to you at all, understand that a node is just a generic term for any machine that we actually manage with Chef. These nodes can be physical, virtual, cloud instances, or even network devices, containers, et cetera. They use the chef-client, a service we'll talk about later on, to pull and apply policy from the Chef Server. When a node pulls policy from the Chef Server, it's called the process of convergence.
+      
+      Convergence is a term we'll use to actually describe applying our Chef code. The node itself actually has a method to gather details about it that the Chef Server will store to make it easy to tell all of our nodes apart. We'll talk about the Ohai tool later in class. Now that we understand the components that we'll be working with, the Workstation, the Chef Server, and Nodes, we should also understand some basic concepts and terms we'll be covering in this class.
+      
+      By the end of it, I hope you'll be very familiar with the terms resource, recipe, cookbook, and node attributes. We'll be talking about these topics in some depth. To review, the Chef Ecosystem itself consists of the primary components called Workstation, Chef Server, and any managed nodes. Again, the Workstation is where we'll actually develop Chef code. And then, we'll upload it from a Workstation to a Chef Server.
+      
+      The Chef Server itself will then distribute your cookbooks to the nodes that it's managing. A node is something that can run our Chef code, and when a node converges, it's the process of pulling any information it needs from the Chef Server and applying those policies. With this overview in place, let's jump in to actually understanding how the Chef model works.
+      
+      
+
+
+      <h3>Install the Chef Development Kit</h3>
+
+      - [Voiceover] I wanted to take a moment to talk about how I've set up my machine for this class. Essentially, we're going to take a look at installing the Chef development kit, which is a collection of tools that we can use to get started with Chef. If you're interested in how I've set up my machine, definitely take a look at downloads.chef.io. On their downloads page, you'll find the Chef development kit. It's a collection of tools that streamlines the process of actually building, developing, and testing your Chef code.
+      
+      It's going to contain a lot of tools that you'll see me demonstrating in this course, like chef generate, chef-client, knife, and test kitchen. You're welcome to check out the downloads section and install it on your machine, if you'd like to follow along with any of the exercises. Now, it's not super-important to understand how the Chef development kit is installed, but you should know that it's built on top of the Ruby programming language. The Chef development kit is not going to install any particular graphical interface, just a command line interface for you to interact with the actual tooling.
+      
+      The toolkit is installed using something called the omnibus installer. What's important for you to understand is that the Chef development kit is installed in an embedded context. What this means is that, if you, for instance, have Ruby installed globally on your machine, the Chef development kit will not conflict with any other installed tools. Because of the embedded context it's installed in, it's very easy to uninstall, reinstall, or upgrade your toolkit through time.
+      
+      If you were to head over to downloads.chef.io and grab the installer, it's just a typical installation where you can actually run through the installer dialog, and to ensure that actually everything's installed, I have a few commands for you to run in the moment. You should understand though, in particular, we need the environment variables loaded into our path, so that we can actually find and reference our tools. Now, on Windows machines, you'll want to ensure that you launch the Chef development kit from your desktop icon that should have been generated during the installation process.
+      
+      This ensures that a power shell session is loaded up, with the path properly set, so you can access all of the tooling. So please, if you're on a Windows system, be sure to launch the icon from your desktop. If you're on a Mac or some other *nix-based system, you'll be just fine using your terminal. Once the toolkit has been installed, you should have access to all of these commands. In particular, running the chef --version command should not produce any errors on the output.
+      
+      If it does, you might take a moment to actually see if you've installed it properly, or re-attempt the installation. Now, we won't be dealing with all of these tools in this class, but you should understand that we're actually going to make sure that they run. These tools are extensions to the Chef development kit, that'll help streamline the development process in the future, if you wanted to learn about more advanced tooling. Chef uses Git to track changes to most of its code base. Now, any other revision control system, such as SVN, can be used.
+      
+      However, you should understand that some of the Chef tooling does want you to actually have Git installed. This means that, if you just want to ensure that you get no errors in running any of the commands you'll see me using, you might consider installing Git, if you don't already have it. In addition to this, you should understand that we'll be using text editors to actually modify code in this class. You can use any text editor you would like when working with Chef. You'll see me using vim throughout the class.
+      
+      You're welcome to use vi, nano, Emacs, or any other text editor you might have installed, such as Atom. Atom is an IDE, an interactive development environment, and actually provides a lot of great feedback for you, as you're writing and building your Chef code. If you've never used any sort of text editor that has extensions, like Linting tools, I'd really recommend looking into Atom. Another option for your IDE might be Visual Studio Code.
+      
+      Visual Studio Code also has a great Chef extension and allows you to streamline your development process. So I recommend either Atom or Visual Studio Code if you've never tried them before. Again, you can use any text editor you'd like. Once you have all these pieces in place, you're set up and ready to interact with the class exercises.
+      
+      
+
+
+      <h3>Provision a CentOS Instance with Vagrant</h3>
+
+      - [Instructor] Before I jump into any exercises, I just want to take a moment to talk about my development environment you'll see me using in this class. Now in particular, I'll be using Vagrant and VirtualBox to manage machines that I want to configure with Chef. However, there are many ways to go about doing this. You could for example, use a cloud provider like Amazon Web Services to actually create the machines that you'll configure with Chef. In my case, I'm going to use Vagrant and VirtualBox because they're free and easy to get started with.
+      
+      So to use these tools, you should understand that I've installed them on my machine, and that prepares me to actually go through and launch a virtual machine that I can configure. To to any of this, if you're going to follow along, I recommend checking the minimum requirements for both of these tools. For example, you'll need to make sure that your BIOS supports hardware virtualization. After making sure that your system meets these requirements, you can then go through and attempt to install these tools.
+      
+      You'll also want to make sure that you have an SSH client available for communicating with your instances. Now on most Linux-based systems, you could use the Terminal. So if you're on a Mac or some other Linux flavor, the Terminal should suit your needs. On Windows machines, you're welcome to use something like PuTTY to connect to the instances, or if you've installed the Chef development kit, it also contains Git Bash, an SSH client. Now I'm going to recommend that you install these tools if you want to follow along.
+      
+      However, understand that VirtualBox, Vagrant, and whatever SSH client you may be using are not Chef products. If you run into issues with these programs, I recommend checking out some of the attached documentation, such as Vagrant issues or the VirtualBox Bugtracker to make sure there aren't any active bugs in the latest versions you're using. With all that in mind, you're welcome to install VirtualBox. You can do this directly from Oracle's website or on Windows systems, you might consider using the Chocolately installer.
+      
+      You can verify your installation by running VBoxManage --version. And it should report back the version without any errors. Similarly, for installing Vagrant, you can download it directly from HashiCorp's website or again on Windows systems, you might consider using the Chocolately package manager to install it. Once you've successfully ran through the installation, inside of your PowerShell or Terminal windows, again you should now be able to run vagrant --version and it shouldn't produce any errors.
+      
+      If you can't get back the versions of these tools for any reason, you might check your system path and see if it includes Vagrant and VirtualBox. Once you've gone through these steps, you'll then need to actually download the base box that we'll use to actually spin up a machine that we'll configure with Chef. With Vagrant, we have the concept of boxes and we'll need to add the actual operating system we're interested in using. I'm going to be provisioning CentOS 7.2 instances in this class.
+      
+      So I'll run the vagrant box add bento/centos-7.2 and I'll add the --provider=virtualbox flag there to insure we grab the right box. After you've run this command successfully, we'll be able to launch our new CentOS 7 instance. To do this, you'll first run vagrant init bento/centos-7.2. This will create what's called a Vagrantfile used for actually provisioning the machine.
+      
+      Once the Vagrantfile has been created in this directory, I can run vagrant up, and it will spin up this virtual machine. I'll then finally be able to login to it with the vagrant ssh command. In this class, you'll see me targeting a specific machine, such as vagrant ssh machine one, and that will log me into the instance. Finally, I can install the Chef development kit inside of this virtual machine, if you prefer to follow along with some of the exercises I'll be demonstrating.
+      
+      Again, I'll be working directly inside that virtual machine, for the beginning portion of the class. You might also look into some common commands that will be used. For example, I'll be using a text editor quite often, and you'll see me using VIM. You're welcome to use any other text editor as well, such as Emacs or Nano. You'll then want to also understand how to manage your Vagrant instance. There are common set of commands that you can use, and you can find them quite easily, but you might be aware of the vagrant ssh-config command, in particular.
+      
+      That'll display some connection details that I'll be using throughout the class. If you wish to shut down your machine, you can run vagrant suspend to save its state. And with the vagrant destroy --force command, we'll actually kill any running virtual machines. Once you've followed these setup instructions and you feel confident that you've got it all in place, feel free to proceed on with the videos. And check out the class exercises.
+      
+      vagrant box add bento/centos-7.2 --provider=virtualbox
+      vagrant init bento/centos-7.2
+      vagrant up
+      vagrant ssh
+      // install ChefDK in the virtual machine
+      curl https://omnitruck.chef.io/install.sh | sudo
+      bash -s -- -P chefdk -c stable -v 0.18.30
+      // install a text editor
+      sudo yum install vim -y
+      // common vagrant commands
+      vagrant ssh-config // displays connection details
+      vagrant init       // creates a vagrant file 
+      vagrant status     // lists VMs and their status
+      vagrant suspend    // saves VM state and shuts down
+      vagrant destroy --force // destroy all running VMs
+
+
+
+
+      <h3>Your First Chef Recipe</h3>
+
+      - [Instructor] It's time to write our very first Chef recipe. With this in mind I'm going to take a moment to make sure the installation steps I showed you in the previous video are all in place. So firstly, I'll check my version of vagrant and virtualbox, and make sure those tools are available in my path. If you're on a Windows system, you might make sure that you've launched the Chef development kit through your desktop if any of the stuff might be missing for you. First, I'll launch the vboxmanage command just to make sure that the version is correct.
+      
+      Then I'll run vboxmanage --version. Don't worry if the tools that you have installed are slightly different versions. I'll next make sure that vagrant is installed, with the vagrant --version command. Now that I'm sure these tools are in my path, I'm ready to go ahead and begin setting up your very first centos box. I'm going to do this by adding a box with vagrant. This is the vagrant box command and I can add a particular virtual machine that I'd like to provision.
+      
+      We'll be using a Chef project called bento. The bento boxes are a great way to get started with vagrant. I'll add the /centos-7.2 in order to it actually download a specific version of this box. I'll also make sure to specify the provider I'm downloading this box for, which is virtualbox. Running this command, it'll take a little time, if you haven't imported the box before, so be patient.
+      
+      Now once it's all set up, we'll be able to actually launch this centos instance. Now that we've actually added this vagrant box to our system we're ready to actually spin it up. To do this, first thing we need to create what's called a vagrant file and we'll do this with the vagrant init command. You can do this once you've added a box like we did in the previous step. And I'll specify that I want to create a vagrant file for the bento box we just downloaded.
+      
+      So, vagrant init bento/centos-7.2. And at this point, you'll see a vagrantfile has been created in your working directory. I'm now ready to actually spin up this virtual machine with the vagrant up command. This will again take just a little bit of time while it sets up this virtual machine. Once it's all launched, we'll be ready to log in to this vagrant instance with the vagrant SSH command.
+      
+      Now that I've actually spun up my virtual machine, I'm ready to log into it. I'm going to clear the screen and now I'm going to log into this machine with the vagrant SSH command. You can check the status of any machine with vagrant status. It shows that I have one machine, the default machine, and I'll log into it with vagrant ssh and you can optionally provide the name of the machine you're going to login into, like default. Now that I'm logged in, I'm going to actually install the Chef development kit inside of this virtual machine.
+      
+      This will allow me to begin immediately working with Chef and demonstrate a little bit about how it works. I'm going to do this by curling the omnitruck website and again see the previous video if you're interested in this. This installation script is going to go through and install a particular version of the Chef development kit. Now again it doesn't quite matter what version of the tooling we use, but I'm going to install a pretty stable version of the Chef development kit here.
+      
+      If you're interested in looking into this further check out that downloads.chef.io link from our previous videos on setting up vagrant. This will install the tool kit that we mentioned in the previous video that has all of the tooling we need to begin developing Chef code. Once it's fully installed, you'll be able to run the Chef --version command and you should get back the version of the tools you just installed. You can see I'm running the 0.18.30 version of the Chef development kit.
+      
+      So, that sets us up on the Chef side but you'll also need a text editor of some sort to interact with the class exercises. I'll be using vi or vim throughout the course. You're welcome to install emacs, nano or whatever you'd like to use. I'll run the sudo yum install command. I'll install vim and I'll answer yes to all questions or dialogs that pop up. Excellent! At this point I should have all that I need inside this virtual machine to actually begin working with Chef.
+      
+      I'm going to again clear the screen and now I'm going to write my very first Chef recipe. Now, you can again use any text editor you'd like. I'm going to open up a file in this home directory I logged into called hello.rb. This is a ruby file. Now I don't want you to worry about this too much in the beginning but this is going to be called a recipe here later on. Inside of this hello.rb recipe, we're actually going to give instructions for having Chef create a file for us.
+      
+      We, of course, have to do a Hello World exercise, right? So I'm going to have you enter in the information you see on the screen if you're following along with the class exercises, and I'll demonstrate this with you. I'll open up a new file in my home directory called hello.rb. Inside of this file I'll go ahead and put the information to have Chef create a new file. The name of that file I'll provide in quotes, which will also be the path to this file.
+      
+      I'm going to place a file inside of our root of the drive called hello.txt. I'm going to open up a do end Ruby block here. Don't worry about the Ruby too much for now, just try and follow along while we write our first recipe. We've essentially told Chef to create that file now, but I'm also going to have Chef fill it with some content. So I'll use the content keyword here, what we'll later call a property.
+      
+      Inside of quotes, I'll then provide the content of the file which will be hello world. You can now save this file. You might verify it exists in your home directory with the list command and at this point we're actually ready to run this file. Now, we'll learn a lot more about the Chef-client later, but for now understand that this is how we're actually going to apply our Chef code. When anyone talks about running Chef they're actually talking about running the Chef-client.
+      
+      Now I don't have a Chef server just yet, which means that instead of having Chef grab our instructions from the server, we're actually going to have a use the file we just created, hello.rb. With that in mind, when I run the Chef-client, I'll do so with the --local-mode or -z flag. What this means is that we're going to run the Chef-client command, add that local-mode flag, and give it the actual file we want it to run, our hello recipe.
+      
+      We'll always execute the Chef-client with elevated or sudo permissions. So I'm going to do this now, inside of this vm where I created my hello recipe, we'll execute sudo chef-client --local-mode and I'll give it my hello recipe. Don't worry about any warnings that pop out at this point in the class. Essentially, if we were going to run Chef like this permanently it'd want a little more information from us.
+      
+      For now, take a look at the output and check out the green text in particular that says that it created a new file called hello.txt and updated the content inside of this file. If you didn't get back with you see on the screen you might check to see if your syntax is correct inside of the file we just wrote, hello.rb. Make sure you've closed all your quotes and other statements like they do end block here.
+      
+      If you were successful, we can check and see if it actually created that file. I'm going to catenate out the contents of the file /hello.txt and you can see that it indeed contains our string hello world. Congratulations, you just wrote your first Chef recipe.
+      
+      vboxmanage --version
+      vagrant --version
+      vagrant box add bento/centos-7.2 --provider=virtualbox      
+      vagrant init bento/centos-7.2
+      vagrant up
+      vagrant status
+      vagrant ssh [name of machine]
+      // install ChefDK on the VM
+      curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P chefdk -c stable -v 0.18.30
+      chef --version
+      // install vim
+      sudo yum install vim -y
+      // create file
+      vim hello.rb
+      // add this to it
+      ...
+      // run the chef client, always run w/ sudo
+      sudo chef-client --local-mode hello.rb
+      // test it's there
+      cat /hello.txt
+
+
+
+      <h2>From Recipes to Cookbooks</h2>
+      <h3>Resources and Recipes</h3>
+
+      - [Instructor] In the last exercise you watched me write my first Chef recipe. You'll notice that recipes are just .rb Ruby files. But I should warn you that I did not write any pure Ruby code. You saw me demonstrate using the Chef client to manage the contents of a file with the block of code you see here. But if it's not Ruby code, what kind of code is it? Well, in Chef we manage any system component using the concept of a resource.
+      
+      Chef resources are a way to manage a system component. When I write a recipe, those Ruby files, they are filled with Chef resources. Let's take a look at some examples. This is the package resource. Can you see what it's doing? These instructions say that a package named httpd, commonly called apache, should be installed. You should understand that any built-in Chef resource also ensures item potency behind the scenes.
+      
+      This means that if the package is already installed, Chef will not attempt to reinstall it, it will simply ensure that the desired state is enforced. In this example the service named ntp is enabled and started. Ntp stands for network time protocol. And this package will allow us to actually go through and sync the system's clock once we start and enable the ntp service. Notice here a lack of distinction about what type of platform this code should run on.
+      
+      In general, Chef resources should be able to function on a variety of platforms in a variety of environments. This is, again, an example of the file resource. Can you see what the code will do? Here we instruct the Chef client to create a file /etc/motd and ensure that the content reads I am the message of the day. Here, again, we're looking at the file resource, but here we're doing something quite different.
+      
+      Instead of telling the Chef client to create a file, this time we're asking it to delete the file. Notice the action keyword here and the colon prefacing the delete action. Now that you've seen some examples of some Chef resources, here's the formal definition: a resource is a statement of configuration policy. But what does the vague definition actually mean? A Chef resource describes the quote unquote desired state of an element of our infrastructure and the steps needed to bring that item into the desired state.
+      
+      So a resource is meant to configure a particular system component, usually a component of a server, and it describes how you want it configured. In other words, we use resources to declare how to configure a server and the Chef client will enforce that configuration for us. Let's take a look at the general structure of a resource. When using Chef resources we should be aware that they are defined inside of our Chef scripts which we call recipes, those .rb files.
+      
+      When calling a resource, how is the code actually written? We always start by defining the type of resource we're working with. This declares what system component we're going to configure. In some of the previous examples, we saw other types of resources such as package and service. There are many built-in Chef resource types, and you can also create your own. After declaring the type of resource we're working with, we then need to name the resource.
+      
+      If you're working with a file or a directory, for example, the name of the resource is also the path to that component. When working with a service, it would typically be the name used to configure it manually such as httpd or apache two. Notice that after we've declared the type and name of the resource, we then define what the content of the file should be. The content keyword is called a property.
+      
+      Each built-in Chef resource has a list of properties that can be configured on that component. For files you could think of the permissions on a file as other properties that could be defined. For packages you might think of the installation directory for the package, or the version that should be installed, as properties. It's often said that resources take action with the defined properties. In order to place a resource in the desired state that we define with properties, we take action on that resource.
+      
+      Action is always taken on a resource whether it is defined or not. In this slide you can see that there is no action defined. This is going to cause the chef client to take the default action for this resource. Default actions usually follow what's called the principle of least surprise. What do you think the default action for the file resource could be? You may have guessed that we're going to take the action of create on this file.
+      
+      For us to fill it with content, it should exist. For other resources, you should be aware of their default actions, although it will usually be what is least surprising. The package resource's default action is install. Remember that you can always define the action that should be taken, but if no action is listed, the default action is taken.
+      
+
+
+      <h3>Test and Repair</h3>
+
+      - [Instructor] With your more formal understanding of the definition of a resource in place, let's take a look at that more concrete example we used before. Now, we had the Chef client generate a file for us called hello.txt. What do you think would happen if we were to go and modify the content of that file directly? So I'm going to do this thought experiment with you. You should understand that when the Chef client runs your recipe, it's going to enforce the state you defined for that resource.
+      
+      Remember what I wrote before, taking a look at my hello recipe. In this recipe, we wrote the content of the hello.txt file should say, 'Hello, world!' Now, I'm going to modify that file that it created, /hello.txt. If I were to add some random content to this file, what do you think would happen the next time the Chef client takes a look at it? I'm going to save this file, and I'm going to verify that it took my changes, just by catenating out its contents.
+      
+      There's my random content that I've added to that file. Now, do you remember the command we ran to run the Chef client? It was sudo chef-client --local-mode, and I gave it my hello recipe. Can you anticipate what's going to happen? You can see that the changes that I've made have been removed. If you check out your summary here, take a look at the fact that it noticed that it did not have to recreate the file.
+      
+      The file already exists. However, it did need to update the file's content. If we want to check and make sure that it actually enforced the desired state, we can again catenate out the hello.text file. And it's now back in the desired state. It has removed the random content line that I added manually. This concept is called test and repair. When the Chef client runs, it will only take action on the resource if it's out of policy.
+      
+      Remember, the policy is whatever we define inside of our recipe. Before the Chef client ever takes action, it examines the state of a resource. If that resource is out of policy, it will take whatever steps needed to bring that item back into the desired state. This diagram might help you understand the concept a little further. When the Chef client is run, it has instructions inside of your recipe about what the state of our hello.text file should be.
+      
+      It makes sure that the file exists, and then it also checks its content to see if its will be defined. If it's already in the desired state, no modifications are made. As a thought experiment, what do you think would happen if we changed a different component of the hello.text file? If I were to manually change the permissions on that file, what do you think would happen the next time the Chef client were to run? Now that you've had some time to think about this, I'm going to go ahead and change the permissions on the hello.text file.
+      
+      Remember, it's the hello recipe in my home directory here that actually created that hello.text file. I'll write ls - la on the /hello.text file I had Chef create earlier. And you'll notice that it is owned by the root user and belongs to the root group. I'm going to manually change the owner of this file, with the sudo chown command. I'm going to change it to vagrant, the user I logged into the machine as.
+      
+      So let's change the owner on hello.text, and I'm going to verify it by running ls -la again. You can now see that vagrant owns this file. So when I run the Chef client command again in local mode, what do you think is going to happen to this hello.text file? Do you think it's going to change the permissions back? Executing the Chef client and taking a look at the output, you can see that there is no green text.
+      
+      It states that the action of create on the hello.text file resource is already up to date, and 0 out of 1 resources have been updated. You might have guessed that this is because we actually didn't define a policy for these properties. For a file to exist, it has to have permissions. But that doesn't mean that Chef is managing them for us. Our recipe actually doesn't state the Chef should manage the permissions on a file, just that its content should be 'Hello, world!' So Chef did exactly what it was supposed to do.
+      
+      How do we define a different policy for this file? This is where docs.chef.io comes in. You might have guessed that it's because we actually didn't define a policy for the permission properties. Our recipe doesn't state that the Chef client should manage the permissions on this file. All that we wrote inside our recipe is that it could have the content, 'Hello, world!' So Chef actually did exactly what we told it to.
+      
+      How would we define a different policy for this file? This is where the docs come up. The docs are a great place to learn more about Chef. They are highly readable and well-maintained. I recommend heading over to docs.chef.io if you have any questions about where to start with Chef resources or concepts. They're well-written and well-maintained, and I'd recommend going there before you just start Googling information about Chef. If you wanted to take a look at the resources docs, you could understand how to set things like the mode of a file, the owner, or the group.
+      
+      If you're on a Windows system, you might take a look at rights. In particular, we can actually set the permissions on hello.text directly. Once you've taken a look at the docs on resources, you can understand how to set these properties yourself. I'm going to go ahead and set them on the file resource we defined before. Remember, this was our hello.rb recipe. I'm going to open up hello.rb, and inside of hello.rb, let's define a little bit more than just content.
+      
+      You can add properties in any order you'd like. And I'll state here that I'd like to define the mode. This will accept a string or an integer value, and I'll set read/write permissions for the owner. In addition to this, I'll specify who the owner and what group this file should belong to with the owner and group properties. Both of these accept a string, and I'll specify that the root user and the root group are the permissions that should be set on this file.
+      
+      I'm going to go ahead and save it and re-execute the Chef client. Remember, we're running it in local mode, and I'm giving it my hello recipe again. We get some very explicit information back that it actually changed the owner from vagrant back to root, and if you manually reexamine the permissions on hello.text, you'll see that indeed, the permissions have been changed back. Well done! This is an introduction to test and repair.
+      
+      You should understand that while Chef does seek to actually enforce the policy, it only enforces policy that you have defined. So with this in mind, understand if change isn't being made as you expected, you might want to check out the properties on any additional resources you're trying to learn about. Great job!
+      
+      // manipulate the generated file
+      sudo vim /hello.txt
+      // run chef-client again, it's over written, it noticed it didn't need to recreate the file, just edit it
+      sudo chef-client --local-mode hell.rb      
+      // list things to view pemissions
+      ls -la /hello.txt
+      // change to the vagrant user you logged into the machine with
+      sudo chown vagrant /hello.txt
+      // see the new permissions
+      ls -al /hello.txt
+      // now this will result in, already up to date
+      sudo chef-client --local-mode hello.rb
+      //////////////////////////////////////// see https://docs.chef.io/resources.html 
+      // set a new property called the mode in your hello.rb file
+      sudo vim hello.rb
+      // add the property to the file's do
+      // // set mode to read write permissions 
+      mode 0644 
+      owner 'root'
+      group 'root'
+      // now restart the chef-client
+      sudo chef-client --local-mode hello.rb
+      // THE PERMISSIONS HAVE BEEN CHANGED BACK!?
+
+
+      <h3>Organize Recipes and Cookbooks</h3>
+
+      - [Instructor] Thinking about the Hello.rb recipe we worked with so far, you're probably excited to see what else we can do with Chef recipes such as configuring web servers. If you come from a developer background, I'm sure you're curious about documenting what this recipe does and how to track changes to it. So, shouldn't we have a readme, some metadata, and version control? A cookbook is Chef's fundamental unit of policy distribution. This means that once we're working with a Chef server we won't be distributing individual recipes to servers, we'll be distributing cookbooks.
+      
+      These cookbooks contain all the instructions on how to use the recipes that come with it and any supporting components your recipes might need to function. Cookbooks can generally be thought of as containers for our recipes. When we author cookbooks, it's important to think about it as a standalone unit that defines a scenario and contains all the components needed to support that scenario. For example, a MySQL cookbook would contain all the instructions on how to install and configure a database.
+      
+      Let's look at how to generate a cookbook with the ChefDK. First, I'm going to be working out of the home directory. Next, I'm going to create a working directory for my cookbooks using the mkdir command. The Chef command comes with the Chef development kit and is primarily used for generating cookbooks and cookbook components. To learn more about any command that comes with the ChefDK, add the --help option to it to see the usage.
+      
+      For example, I'm going to head over to my terminal session. If I wanted to generate a cookbook, the chef generate command can help me out. Adding --help here shows how to actually select a generator like the cookbook generator here. If I want to learn more about how to use it, I can type chef generate cookbook --help and see all the usage. It states here that I need to provide a name for my cookbook, which, in our case, is also going to be the path to our cookbook.
+      
+      I'm going to run chef generate to create a web server cookbook, which I will call Apache. We'll say chef generate cookbook. I'm going to place this cookbook in the cookbooks directory and I'm going to name it Apache to symbolize setting up our web server. When the command completes successfully, you'll see a message that states that your cookbook is ready and change into it. Now, I would like to take a look at what this cookbook actually is structured like.
+      
+      So, to do this, we're actually going to install the tree package. You can do this the same way you installed your text editor before. I'll say sudo yum install tree and I'll add the -y command to just accept any prompts. Now, running the tree command allows me to take a look at directory structure for our cookbook. You can see here that the Apache cookbook contains several components. We want to look at what these components are and what they're used for.
+      
+      So, in particular, if you want to follow along, take a look at a tree on your Apache cookbook. Now that we've generated this cookbook, let's look at the components that come with it starting with the readme. A readme is going to be nothing more than a description of the cookbook's features written in standard Markdown. In our case, we ought to document how to use the cookbook and also what each recipe inside of it is for. This is a human readable file and is very similar to what you might see in a readme displayed on a GitHub page.
+      
+      Next, we should be aware of the metadata file. Each cookbook is going to have some amount of metadata associated with it. This might be the name of the cookbook, a description of what it's used for, and how to get ahold of the person responsible for maintaining it. Here's an example of what the metadata file looks like. And you can see, we describe what the cookbook is used for and we also document the version of our cookbook. Very important to understand that the version of the cookbook is maintained inside of its metadata file.
+      
+      You'll also notice a folder called Recipes. The Recipes directory contains all of those Ruby files we're interested in developing in this class. The recipes will all go in this directory and when you've scaffold out a cookbook with chef generate, you'll notice there's always going to be a default recipe. The default recipe is used to set up a default configuration for this cookbook. We'll chat more about this later on. But for now, understand that the default recipe contains nothing more than some comments about what the cookbook is used for and the recipe within it.
+      
+      Comments are those pound symbols that you see at the beginning of each line. Now, heading back over to my terminal session here, you'll also notice the spec and test directories. And depending on what version of the Chef development kit you're using, these directories might look slightly different. So, do keep that in mind. With newer versions of the ChefDK, you might see a slightly different directory structure here. The ChefDK builds testing components into each cookbook that you generate to make it easy to check your code for functional integrity and reliability.
+      
+      The spec directory is used for unit testing your cookbooks. This is something we won't go into detail with in this class. The test directory is used for running integration tests for your cookbooks. You'll get to look forward to a short demo of Test Kitchen later in this class and definitely check out the further resources section to learn about where you can find more. Now, if you look at hidden files or folders inside of your Apache cookbook itself, you'll also notice a .git directory.
+      
+      This is assuming that you have installed Git for version control. If you've installed Git, when you run the chef generate cookbook command, you'll see that it creates a .git directory. This allows you to actually work with version control, something I won't go into in this class, but you should understand that you can track changes to your cookbook using Git or any other revision control system, such as Subversion. So, feel free to use that to track changes to your recipes as you go, but understand it's up to you to setup any upstream repositories for Git.
+      
+      I will not be tracking changes as I go throughout these demos. With that in mind, you now understand a little bit about how to actually create a cookbook and the different components that are inside of it.
+      
+      // get some help making a cookbook
+      chef generate --help
+      chef generate cookbook --help
+      // create aa apache cookbook and place it in the /cookbooks/apache directory
+      chef generate cookbook cookbooks/apache
+
+
+
+      <h3>The Apache Cookbook</h3>
+
+
+      <h3>Apply Cookbooks and include_recipe</h3>
+
+
+      <h3>Ruby and Resources</h3>
+
+
+      <h3>Ohai - The Node Object</h3>
+
+
+      <h3>Templates and Embedded Ruby</h3>
+
+
+      <h2>The Chef Server</h2>
+      <h3>The Benefits of Using a Chef Server</h3>
+
+
+      <h3>Get Started with Hosted Chef</h3>
+
+
+      <h3>Provision Nodes with AWS</h3>
+
+
+      <h3>Bootstrap a Node</h3>
+
+
+      <h3>Test Deployments with Kitchen</h3>
+
+
+      <h2>Going Full Scale</h2>
+      <h3>Manage Multiple Nodes</h3>
+
+
+      <h3>Chef Supermarket</h3>
+
+
+      <h3>Wrapper Cookbooks</h3>
+
+
+      <h3>Resolve Dependencies with BerkShelf</h3>
+
+
+      <h3>Deploy the Haproxy Cookbook</h3>
+
+
+      <h3>Server Artifacts: Roles, Environments, Data Bags, and Demo</h3>
+
+
+      <h2>Conclusion</h2>
+      <h3>Next Steps</h3>
+
+    </div>
+  </div>
+</div>

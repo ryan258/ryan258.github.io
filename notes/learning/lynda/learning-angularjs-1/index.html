@@ -1,0 +1,308 @@
+<div class="grid-container">
+  <div class="grid-x grid-margin-x">
+    <div class="cell large-12">
+      <h1>Learning AngularJS 1</h1>
+      <h2>Intro</h2>
+      <h3>Welcome</h3>
+      <h3>What you should know</h3>
+      <p>You're going to need</p>
+      <ul>
+        <li>Server</li>
+        <li>Experience working w/ web projects</li>
+        <li>HTML/CSS/JS</li>
+        <li>Bootstrap 4</li>
+        <li>Git and GitHub</li>
+      </ul>
+      <h3>Using the exercises for this course</h3>
+      <p>
+        <a href="https://github.com/planetoftheweb/angular">This git repo</a> organized into branches</p>
+      <p>steps</p>
+      <ol>
+        <li>
+          <code>$ mkdir angular</code>
+          <br>Then
+          <br>
+          <code>$ cd angular</code>
+        </li>
+        <li>Clone the repo</li>
+        <li>Grab just the .git folder and put it in that angular folder
+          <br>
+          <code>$ git clone --bare https://github.com/planetoftheweb/angular.git .git</code>
+        </li>
+        <li>Turn the bare off so we can restore it
+          <br>
+          <code>$ git config --bool core.bare false</code>
+        </li>
+        <li>Make this a regular git repo
+          <br>
+          <code>$ git reset --hard</code>
+        </li>
+        <li>Run the
+          <code>$ git branch</code> command to see all the branches locally</li>
+        <li>Install the dependencies with
+          <br>
+          <code>$ npm install</code>
+        </li>
+      </ol>
+      <h2>Getting Started</h2>
+      <h3>What is AngularJS?</h3>
+      <p class="lead">Simply a framework that makes it easier to build single-page apps (a way to structure your programs)</p>
+      <h4>Features</h4>
+      <ul>
+        <li>Directives ~html attribute - commands you can add to HTML to give it superpowers</li>
+        <li>MVC - the main way to think of things in AngularJS - when we talk about the model we simply mean
+          <strong>data</strong> and the
+          <strong>view</strong> means a template system and
+          <strong>controller</strong> the JS that links the data in the templates</li>
+        <li>Data binding - to bind the model and views together, AngularJS has a unique way of doing this called 2-way data-binding,
+          they're bound togeher</li>
+        <li>Expressions - to add Angular data to your HTML - {{}}'s - how you output something from the controller(JS) to the
+          view(template)
+        </li>
+      </ul>
+      <h4>AngularJS("old version") vs Angular
+        <ul>
+          <li>Different Paradigms</li>
+          <li>MVC(AngularJS) vs Components(Angular)</li>
+          <li>AngularJS is more stable, Angular has a schedule of a major revision every 6 months</li>
+          <li>AngularJS requires a lot less tooling compared to Angular</li>
+          <li>
+            <em>w/ AngularJS all you have to do is add a couple script tags</em>
+          </li>
+          <li>Download from angularjs.org</li>
+        </ul>
+      </h4>
+      <h3>Binding and Directives</h3>
+      <p class="lead">Angular uses these to setup a relationship between the data and the rest of your code, binding, applied with directives.</p>
+      <h4>Binding</h4>
+      <ul>
+        <li>First declare your ng-app - (to the section handled by Angular) - if the whole thing is an app you can add ng-app
+          to the html tag</li>
+        <li>AngularJS directives - a fancy name for a command - almost always begin with the ng- prefix and look like html attributes</li>
+        <li>ng-model directive - creates a variable in your app('s scope') and it goes inside an html form element</li>
+        <li>the variable can then be accessed within your scripts as well as your template (2-way data-binding)</li>
+        <li>To display data, use {{}} expression,
+          <strong>also can be included is any sort of JS</strong>
+        </li>
+        <li>Place the scripts in the HEAD before the body because we need it to load first</li>
+      </ul>
+      <h3>Modules, Controllers, and Scope</h3>
+      <p class="lead">Help you create a better application - modules and controllers handle the functionality of your application</p>
+      <h4>Working with Modules</h4>
+      <ul>
+        <li>module(), ng-app</li>
+        <li>the module is a container for different partsof your application</li>
+        <li>Inside a module we can hve different controllers</li>
+        <li>In order for it to work you're going to need to connect the module to our HTML usingthe
+          <strong>ng-app</strong> directive</li>
+        <li>Once we have a module we can specify one or more controllers - controllers are pieces of code that handle some specific
+          functionality within a module</li>
+        <li>in order to specify where a specific controller handles functionality we can use the
+          <strong>ng-controller</strong> directive</li>
+        <li>$scope - a controller can be defined w/ different dependencies - a dependency is just a name for something that a
+          controller needs in order to work</li>
+        <li>1 of the most common ways to initialize components is by using a special variable called
+          <strong>$scope</strong> - think of scope as a global object that we can use to communicate between our JS and HTML
+        </li>
+        <li>If we define a variable in our scope we can use it in our HTML</li>
+      </ul>
+      <h3>Basic Debugging and ngSrc</h3>
+      <ul>
+        <li>How errors are displayed in angular
+          <ul>
+            <li>it'll scream in the console.</li>
+            <li>use ng-src="images/{{}}"</li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Using Angular</h2>
+      <h3>Conditionals and Loops</h3>
+      <p class="lead">As things get complex we'll need a way of controlling the display of DOM elements that are tied to certain data and
+        loop through different content..</p>
+      <ul>
+        <li>ng-show - injection, popping in a class</li>
+        <li>ng-hide</li>
+      </ul>
+      <p>These both do the same thing depending on the kind of expression</p>
+      <p>Both use classes to show and hide the elements, meaning that the elements will still exist in the DOM</p>
+      <h4>ng-if</h4>
+      <p class="lead">Will create an element only if what you give the expression results in being true.</p>
+      <p>
+        <em>creates or destroys the element</em>
+      </p>
+      <h4>ng-repeat</h4>
+      <p class="lead">Use to loop through items</p>
+
+
+      <h3>Using the $http service to read a JSON file</h3>
+      <p class="lead">Services - for when you want to extend AngularJS</p>
+      <ul>
+        <li>$http - allows you to handle Ajax requests to load files like json documents
+          <ul>
+            <li>Runs w/ a server, because an AJAX requests requires it</li>
+            <li>Returns a promise - when the request is ready, we can execute some code afterwards</li>
+          </ul>
+        </li>
+
+      </ul>
+      <h3>Basic Content Filters</h3>
+      <p>Use the | and : characters</p>
+      <ul>
+        <li>currency</li>
+        <li>number</li>
+        <li>date</li>
+        <li>lowercase</li>
+        <li>uppercase</li>
+      </ul>
+      <h4>Usage Steps</h4>
+      <ol>
+        <li>Find the expression in the html</li>
+        <li>add a | uppercase after the item</li>
+        <li>optionally: use : afterwards to pass different parameters</li>
+      </ol>
+      <h3>Array Management Filters</h3>
+      <p class="lead">Filters that work with lists - arrays and objects</p>
+      <p>
+        <a href="https://docs.angularjs.org/api/ng/filter">See all filters in the docs</a>
+      </p>
+      <ul>
+        <li>limitTo:qty:start</li>
+        <li>filter:keyword - narrows a list of elements based on an array given a certain keyword</li>
+        <li>orderBy:key:reverse</li>
+      </ul>
+      <h3>Binding Inputs and Controllers</h3>
+      <ul>
+        <li>add a ng-model=""artistOrder to the form element</li>
+        <li>wire it into the list-element</li>
+        <li>add ng-model to the input</li>
+      </ul>
+      <ol>
+        <li>When you define a model, you create the variable</li>
+        <li>then it has 2-way data binding</li>
+      </ol>
+      <h2>Exploring Angular Concepts</h2>
+      <h3>Routing and Deeplinking</h3>
+      <h4>Deep Linking</h4>
+      <p class="lead">Making different urls load up different content and is handled through
+        <strong>ngRoute</strong>.</p>
+      <ul>
+        <li>ngRoute - a different module</li>
+        <li>Then we loaded it up through the
+          <strong>$routeProvider</strong> where we can specify what's going to be loaded and which piece of JS code is going to control
+          the different content.
+        </li>
+        <li>Then we use a special directive called
+          <strong>ng-view</strong> to load up the appropriate code depending on our URL</li>
+        <li>We'll take a different approach to defining our controllers - Chapter 3</li>
+      </ul>
+      <h3>Adding a Different Route</h3>
+      <h3>Passing Variables Through Routes</h3>
+      <p class="lead">There's a groovy library called route parameters</p>
+      <h2>Next Steps / Conclusion</h2>
+    </div>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div class="grid-x grid-margin-x">
+    <div class="cell large-12">
+      <h1>AngularJS 1 (1/2) - Adding Registration to Your Application</h1>
+      <h2>Setting Up AngularJS</h2>
+      <h3>What we're building</h3>
+      <h3>Adding a basic MVC structure</h3>
+      <ul>
+        <li>Simple index.html - w/ our main tag where most of our content is going to reside.</li>
+        <li>All the content being shoved into index.html is going to be coming from the
+          <strong>/views/</strong> directory</li>
+      </ul>
+      <h3>Using routes</h3>
+      <h3>Creating basic controllers</h3>
+      <h3>Working w/ AngularJS Validation</h3>
+      <ul>
+        <li>novalidate - hijacks the form validation</li>
+        <li>then you add angular directives like
+          <ul>
+            <li>ng-model="user.object" - creates a variable (in the current app's scope inside the user object) and puts content
+              in a (user) object</li>
+
+          </ul>
+        </li>
+        <li>ng-required="true"</li>
+        <li>In the view you can - {{ myform.email.$invalid }}</li>
+      </ul>
+      <h3>Processing Form Input</h3>
+      <ul>
+        <li>ng-submit="login()" - calls a function on submit</li>
+        <li>add a method to the controller</li>
+      </ul>
+      <h3>Including Navigation into Our Application</h3>
+      <ul>
+        <li>ng-include="'views/nav.index'"- allows you to include a document inside another document</li>
+        <li>they can also be managed by controllers</li>
+        <li>ng-href="#/login"</li>
+      </ul>
+      <h2>Managing Registration w/ Firebase</h2>
+      <h3>Integrating Firebase</h3>
+      <p class="lead">Firebase is a Hosted NoSQL platform from Google for creating real time applications.</p>
+      <p>Does a great job of handling registration for you</p>
+      <ul>
+        <li>Go to console</li>
+        <li>name it, create project</li>
+        <li>click firebase for the web</li>
+        <li>copy the code</li>
+        <li>add it to the head of your index.html page between the angular scripts and your custom script tags</li>
+        <li>Click authentication tab</li>
+        <li>click setup a sign in method in firebase</li>
+        <li>choose providers</li>
+        <li>go to
+          <a href="https://firebase.google.com/docs/libraries/?authuser=0">Documentation > Libraries</a> > Grab the framework</li>
+        <li>click link to AngularFire that'll take you to a GitHub repo - grab the
+          <a href="https://cdnjs.cloudflare.com/ajax/libs/angularFire/2.3.0/angularfire.min.js">CDN</a>
+        </li>
+      </ul>
+      <p>Firebase includes different ways of authentication</p>
+      <h3>Adding Firebase Registration to a Controller</h3>
+
+      <h3>Abstracting Authentication into a Service</h3>
+      <h3>Storing Registration Info in our Database</h3>
+      <h3>Logging Users into Our Application</h3>
+      <h3>Detecting Authentication Events</h3>
+      <h3>Logging Users Out of our App</h3>
+      <h3>Controlling Authentication on Pages</h3>
+      <h3>Improving Our Registration Flow</h3>
+      <h2>Conclusion</h2>
+    </div>
+  </div>
+</div>
+
+<div class="grid-container">
+  <div class="grid-x grid-margin-x">
+    <div class="cell large-12">
+      <h1>AngularJS 1 (2/2) - A Data-Driven App</h1>
+      <h2>Getting Started</h2>
+      <h3>What We'll Build</h3>
+      <h3>What we're Starting With</h3>
+      <h3>Customizing Our Template</h3>
+      <h2>Managing Meeting Info</h2>
+      <h3>Adding a Form to Create Meetings</h3>
+      <h3>Moving Records to our Database</h3>
+      <h3>Showing and Deleting Records</h3>
+      <h3>Using events to Track Meetings</h3>
+      <h2>Checking in Users</h2>
+      <h3>Adding a Form to Check in Users</h3>
+      <h3>Creating a Checkin Method</h3>
+      <h3>Preparing a list of checked in Users</h3>
+      <h3>Deleting Checkins</h3>
+      <h3>Security Through Checkins</h3>
+      <h3>Searching Through Checkins</h3>
+      <h2>Other App Functionality</h2>
+      <h3>Picking a Random Entry</h3>
+      <h3>Creating an Award Interface</h3>
+      <h3>Pushing Awards to Our Database</h3>
+      <h3>Deleting Award Records</h3>
+      <h3>Creating Conditional Styles</h3>
+      <h3>Managing Application Permissions</h3>
+      <h2>Conclusion</h2>
+    </div>
+  </div>
+</div>

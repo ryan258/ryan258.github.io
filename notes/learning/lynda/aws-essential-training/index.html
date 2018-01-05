@@ -1,0 +1,677 @@
+<div class="grid-container">
+  <div class="grid-x grid-margin-x">
+    <div class="cell">
+
+
+    <a href="https://www.lynda.com/Amazon-Web-Services-tutorials/Amazon-Web-Services-Essential-Training/569195-2.html"><h1>AWS Essential Training</h1></a>
+
+    <h2>Intro</h2>
+
+    <h3>Welcome</h3>
+
+    <p class="lead">Interested in laying a solid foundation upon which to build scalable and reliable application architectures in the Cloud? Great! Together we'll go through series of good practices and core principles to building applications in the AWS Cloud.</p>
+
+    <p>We'll be building a web application, using three different approaches.</p>
+    
+    <ul>
+      <li>Manual approach to show each component service.</li>
+      <li>Then demonstrate one of AWS' manage services to automate much of the process.</li>
+      <li>Then, I'll create the web application using a serverless approach.</li>
+    </ul>
+
+    <h3>What you should know</h3>
+
+    <p>A few things you need to know. I assume you have a basic understanding of</p>
+    
+    <ul>
+      <li>the basic components of systems and application architecture,</li>
+      <li>terms like IP, network, port, web server and database server are understood.</li>
+      <li>Also, I'll be using just a little PHP, JavaScript, and some Linux commands in the examples, so some knowledge of this may be helpful.</li>
+    </ul>
+    
+    <p>In order to follow along on your own, during the demos, you will need to create an AWS account, which does require a valid credit card to complete account creation.</p>
+
+    <h2>Cloud Concepts</h2>
+
+    <h3>Cloud Services</h3>
+    
+    <p class="lead">The Cloud generally refers to anything involving hosted services over the internet.</p>
+    
+    <p>These hosted services are often broken into three main categories:</p>
+    <ul>
+      <li>Infrastructure as a Service, or IaaS,</li>
+      <li>Platform as a Service, or PaaS,</li>
+      <li>and Software as a Service, or SaaS.</li>
+    </ul>
+
+    <p>The differences between these lies in the level of abstraction or virtualization being provided. There are many components that go into getting an application designed, built, and launched.</p>
+
+    <div class="grid-x grid-margin-x">
+      <div class="cell medium-6">
+        <p>There are lower-level components, such as:</p>
+        <ul>
+          <li>the Networking,</li>
+          <li>Block and File-based storage,</li>
+          <li>Load balancers,</li>
+          <li>and Servers.</li>
+        </ul>
+      </div>
+      <div class="cell medium-6">
+        <p>Sitting on top of these lower-level components are</p>
+        
+        <ul>
+          <li>the Operating System that runs on the servers and load balancers,</li>
+          <li>and the Runtime environment for the coding language being used by the application.</li>
+          <li>Application database software</li>
+          <li>the application code itself.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <p class="callout">Cloud providers are in the business of offering one or more of these levels of components as a set of services.</p>
+
+    <p>Rather than having to manage every single component layer, application developers can utilize Cloud services to extract out one or more of these levels. This can ease the burden of administration and often help speed up development.</p>
+    
+    <ul>
+      <li>IaaS Cloud Services are those providing the lowest level components.</li>
+      <li>Platform as a Service offerings are hosted services that move up this component stack and provide the management of additional components, such as the underlying operating system and language runtime.</li>
+      <li>SaaS Cloud providers are providing everything, including the application itself.</li>
+    </ul>
+    
+    <p>Often, when people think of Amazon Web Services, or AWS for short, they consider it an example of Infrastructure as a Service. However, AWS provides a wide range of Cloud-based services that span all of these categories.</p>
+
+    <h3>Business Benefits</h3>
+
+    <p>There are some major benefits of using the cloud from a business perspective.</p>
+    <ul>
+      <li>The cloud allows for a minimum upfront investment in the infrastructure needed to launch an application.<br />Companies don't have to purchase or manage racks or physical servers, power supplies, routers, cables, and all the parts and the connections between them that are needed to host a technology product.</li>
+      <li>The cloud offers something referred to as just-in-time infrastructure.<br />
+        This refers to the ability to only allocate then use exactly what is needed and only when it is needed.</li>
+    </ul>
+
+    <p>In traditional environments, system administrators have to guess the quantity of hardware to provision when launching new applications, and it can be costly when getting this wrong. Say, for example, when the capacity is underallocated and the application is unable to handle a large load. The user experience suffers, which results in the business suffering as well. On the other hand, if there is an overallocation of resources, there is a lot of wasted investment, which can also be a problem for business.</p>
+
+    <p class="callout">The cloud keeps costs low by allowing an application to scale as it grows. The cloud also helps maximize the efficiency of resources.</p>
+    <p>Applications can request and relinquish resources on demand. Teams no longer spend time guessing the quantity of hardware to procure nor figuring out what to do with idle resources. The cloud allows companies to use only what they need and pay for those resources only when in use. <strong>With Amazon Web Services, there are no long-term commitments.</strong></p>
+
+    <p>This promotes an exploratory approach, allowing companies to experiment with different configurations and try different options, while keeping costs under control. This of course is by no means an exhaustive list of the business benefits. Many companies realize unique benefits to their business as they begin using cloud-based resources.</p>
+
+    <h3>Technical Benefits</h3>
+
+    <p>There are also many technical benefits to using cloud services.</p>
+    
+    <ul>
+      <li><strong>The cloud provides an environment rich with automation opportunities.</strong>
+        <br />Infrastructure becomes scriptable. The suite of AWS services have APIs that can be used to integrate with other systems and automate processes. What was once only thought of as hardware can now be viewed as software. By leveraging these APIs, repeatable build and deployment systems can be built.</li>
+
+      <li><strong>Applications can be scaled out, in, up, and down To match demand without any human intervention.</strong>
+        <br />With improved opportunities for automation comes reliability, sustainability, and the ability to focus less on boiler plate tasks and more on the specific business application. As a specific use case of the general automation benefit, the ability to automatically scale infrastructure is a key benefit of cloud computing.</li>
+
+      <li><strong>The cloud allows application to react to changing load and demand in an automated fashion.</strong>
+        <br />In addition to scaling applications automatically in reaction to some unexpected event, the cloud allows for proactive scaling in anticipation of an expected event. For example, if the marketing department at a company is launching a campaign which is sure to be a big Super Bowl moment, the application can be proactively scaled out to meet this anticipated demand. And then, scaled back in, once that moment has subsided, and the additional resources are no longer needed.</li>
+
+      <li><strong>The flexibility the cloud provides lends itself to improving the efficiency of the software development life cycle, and provides a means to improve testability.</strong>
+        <br />For example, production systems can be readily cloned for use as a development environment and test environments. And there is no running out of hardware for testing. The cloud also greatly simplifies meeting high availability and disaster recovery requirements. In a traditional hosting environment, the ability to deploy an application to separate geographical locations is very challenging and often expensive.</li>
+
+      <li><strong>The cloud provides services allowing applications to be distributed and replicated across multiple geographic locations.</strong>
+        <br />Many companies employ a method of saving data and application information to external drive devices, and then physically transport those devices to a separate geographical location. If any real disaster were to happen, the recovery part would be challenging and slow. The cloud makes this process a thing of the past.</li>
+    </ul>
+
+    <h3>Scalable Architectures</h3>
+
+    <p class="lead">The cloud provides infrastructure that has the ability to change and adapt in order to handle a growing or diminishing workload. This is called scaling.</p>
+    
+    <p>Cloud infrastructure can easily scale out, in, up or down, depending on the needs of the system.</p>
+    
+    <p class="callout"><strong>Scaling out</strong>, also referred to as horizontal scaling, is when capacity is added to a system by adding more components or nodes that make up that system.</p>
+
+    <p>An example of this would be adding more web servers to an application to handle an increase in traffic.</p>
+    
+    <div class="callout">
+      <p class=""><strong>Scaling in</strong>, also part of horizontal scaling, is simply the opposite of scaling out. It is when capacity is removed from a system by decreasing the number of components or nodes. </p>
+      
+      <p>So, if the number of web servers are reduced, the web server tier has been scaled in.</p>
+    </div>
+      
+    <p class="callout"><strong>Scaling up</strong>, also referred to as vertical scaling, is when resources are added to a single component or node in the system in order to increase its capacity to handle load.</p>
+
+    <p>An example of this would be increasing the number of CPUs of a web server, or increasing the memory of a database server.</p>
+    
+    <p class="callout"><strong>Scaling down</strong>, also a form of vertical scaling, is reducing the resources of a single component or node in the system. It's just the opposite of scaling up.</p>
+    
+    <p>Reducing processing capacity or decreasing memory of a server is scaling down that server. An important thing to understand when building applications in the cloud is that the applications themselves must be built in a scalable way in order to take advantage of a scalable infrastructure.</p>
+
+    <p>And while the cloud is built to provide at least, in theory, infinite scalability of its resources, the scalability cannot be leveraged if the application itself is not designed in a manner to take advantage of the scalability.</p>
+
+    <h3>Understand Elasticity</h3>
+
+    <p class="lead">The word elastic brings to mind things that are stretchy. Something that can expand and contract when it needs to. Referring to the cloud as elastic has the same meaning.</p>
+    
+    <p>Just as the elastic waistband on a pair of pants helps both before and after a large meal, the elastic nature of the cloud refers to its ability to accommodate changes in load and demand of the system. Compare this to a nonelastic hosting environment where there is fixed capacity.</p>
+    
+    <p class="callout">If changes in the capacity are needed, much planning, time, and money are also needed to make these changes.</p>
+
+    <p>Think of the capacity as the number of web servers available in the system. When launching a new application:</p>
+    
+    <ul>
+      <li>the development team will need to configure a production environment to support this new application.</li>
+      <li>Through much planning and estimation, the team predicts five web servers will be needed.</li>
+      <li>So, five web servers are provisioned, racked, and configured, and this is where the capacity starts.</li>
+    </ul>
+
+    <p>The product launches, and the web servers are monitored as customers start using the application. At first, actual demand is less than the estimated capacity. So, there is excess capacity. That's the area between the allocated capacity and actual usage. <strong>This is wasted money</strong>, because our allocated capacity at times far outweighs demand.</p>
+    
+    <p>Now, imagine the marketing team starts advertising, which results in a traffic and usage spike.</p>
+
+    <p>The spike actually exceeds the allocated capacity, and now customers trying to access the application are being denied. The application is down, the team must do more planning and predicting and make another upfront investment to purchase more web servers. The team decides to get five more servers in place. The application is scaled out by five servers. Now, the capacity is at 10 and can handle the marketing spikes, but there are dips in demand that cause considerable waste.</p>
+
+    <p>Sometimes, even much more waste than before. This cycle continues as demand fluctuates. There's got to be a better way. Enter the cloud. The same application deployed on the cloud would be able to take advantage of its elastic nature. In the cloud scenario, the applications starts at the same place. There is still some planning involved, and a starting capacity for launch has to be decided. The predictions are the same as before, so the team still decides to start with five servers.</p>
+
+    <p>While monitoring actual usage, it may be determined that five servers were too many. No problem. With AWS's auto scaling service, the web server tier can easily be scaled in from five servers to four servers, thereby reducing the waste and saving money. Monitoring continues, and when the marketing team starts to have their success, the four servers start approaching full utilization. Again, no problem. The auto scaling service can once again be used to scale out to accommodate.</p>
+
+    <p>This can continue to be leveraged in a manner to always stay one step ahead and outpace the demand. Server metrics such as CPU utilization can be monitored. When the utilization rises above a certain threshold, the application can scale out and keep customers happy. And, if levels again dip below certain thresholds, the application can scale in and keep the accounting department happy without impacting customer satisfaction. Elasticity is one of the fundamental properties of the cloud.</p>
+
+    <p>This power to quickly scale computing resources in, out, up, and down will ultimately drive a lot of the benefits of using the cloud.</p>
+
+    <h3>Cloud Constraints</h3>
+
+    <p>- When new system administrators start using the cloud, one of the first steps taken is to try to determine what resources will be needed. One of the first steps may be attempting to map an existing non-cloud system to resources available in the cloud. Most of the time, such an exercise will reveal that the cloud does not have an exact specification match for every component in the system. The exact specifications of the existing on-premise infrastructure are no longer a constraint.</p>
+
+    <p>The cloud provides many building blocks from which to construct a new system. They become even more powerful when combined with the cloud's on-demand provisioning model. Even though an exact replica of existing hardware may not be available in the cloud, the ability exists to get more resources to compensate. This is all structured with scalability in mind. For example, if there is not a cloud server type that has the exact or greater amount of RAM currently being used on a single server in their traditional environment, the system administrator needs to think about ways to distribute that need across multiple servers, perhaps by rethinking the application architecture.</p>
+
+    <p>Leveraging other available cloud services like a distributed memory cache could help. AWS ElastiCache is an example. Perhaps a database server requires more input-output operations per second, or IOPS, than what the cloud provides. The system administrator needs to think of other ways to achieve this based on the application data and use cases. Taking advantage of some of Amazon's database services such as RDS or DynamoDB might provide a solution.</p>
+
+    <p>Data can be distributed across a cluster to help distribute memory size requirements. If at first it seems like constraints are being hit with cloud infrastructure, which in theory is infinitely scalable, it's likely due to the application architecture not being built in a scalable manner. These should not be thought of as constraints, but rather opportunities to remove fixed barriers by combining services and resources. Doing so results in improved scalability and overall performance of an application.</p>
+
+    <p>It will also help to build an application architecture poised to get maximum benefit from the cloud's elastic nature. Any apparent constraints when evaluating cloud-based resources are most likely just differences between scalable architectures and rigid fixed ones.</p>
+
+    <h3>Role of an AWS admin</h3>
+
+    <p>- The flexibility and on-demand model that the cloud provides results in a changing role for the traditional systems administrator. The provisioning of servers, installation of software, and wiring up of network devices are now clicks of the mouse and command line API calls. The cloud demands that system administrators think even more about automation because the infrastructure they are administering is now programmable. System administrators now need to manage abstract virtual cloud resources.</p>
+
+    <p>They need to be more aware of the underlying applications running on the infrastructure. Likewise, the traditional role of the database administrator changes when taking advantage of cloud resources. Database administrators will start to manage their resources through a web-based console, executing scripts that alter database capacity when needed. This new DBA needs to be aware of using virtual machine images for deployment and embrace new ideas to support highly available and highly reliable data tiers such as geographical redundancy or asynchronous replication.</p>
+
+    <p>They need to learn to leverage different storage options available beyond traditional relational database management systems. Perhaps even rethink their data architecture by taking advantage of horizontal partitioning or other sharding techniques. Traditionally, a lot of systems and network administrators knew very little about the applications they were supporting, and many application developers thought little of the infrastructure and systems supporting their applications. When building solutions in the cloud, those roles overlap, and much more knowledge between these roles should be shared in order to build cohesive technology solutions that maximize the benefits of cloud services.</p>
+
+    <h2>Cloud Best Practices</h2>
+
+    <h3>Design for failure</h3>
+
+    <p>- "Everything fails, all the time." This is an oft used quoted from the CTO of Amazon which really emphasizes the need to keep failure in mind when designing cloud-based systems. While this certainly sounds bleak and terribly pessimistic, systems and hardware fail. His statement is intended to get a new cloud developer and architect in the right mindset to be thinking about failure and designing for it accordingly. The idea here is that while failure should be expected within the individual components of an application, the overall system can be architected to prevent application failure.</p>
+
+    <p>Expecting parts of the system to fail will drive an architecture that leads to the building of an overall system that won't fail. Thinking about failure up front causes recovery strategies to be part of the design process, which will lend itself to a better, more stable end product. One major rule of thumb to consider when designing for failure is to avoid single points of failure. Take for example a common web application, where a single server, instance, hosts both the web server and the database software.</p>
+
+    <p>While this architecture will get an application working, it's not designed for failure. If anything happens to this single instance, the entire application fails. One step might be to move the database to its own instance. This separates it from the web server. This architecture now allows for the introduction of a load balancer, which allows the scaling of web servers. This is a step in the right direction. Now the system can tolerate a web failure without resulting in a system-wide failure.</p>
+
+    <p>But even in this improved architecture, there are still single points of failure. Now, both the database server and the new load balancer introduced, represent single points of failure. If either of these fail, the entire system fails. In a world before AWS, horizontally scaling the database tier was very challenging. And adding redundancy for either the database or the load balancer was cost-preventative for all but the largest companies.</p>
+
+    <p>But with AWS, removing such single points of failure is achievable. Here's the same application with two web servers connecting to a single database instance. However, now the application is leveraging Amazon's RDS service for the database. RDS can be configured to have a standby instance as a secondary database server. It can also be configured to automatically fail over in the event of a database issue. Now, if our primary database fails, the system will automatically switch to use the alternate database which has been happily standing by to help in just such an event.</p>
+
+    <p>RDS takes care of all the messy synchronization details. Similarly, for the load balancer, Amazon's Elastic Load Balancer service can be used. With this service, scaling and redundancy are automatically included. Amazon takes care to ensure this is not a single point of failure for your system. Avoiding single points of failure, of course, is not just relevant for the hardware components, it includes considerations at the network and software levels too. And even when single points of failure have been avoided, consideration must be given to how the fail over happens.</p>
+
+    <p>The fail over process itself may entail other hardware, software, or network resources, and this may need to be incorporated into the application design. AWS provides many services to help eliminate single points of failure. I'll be introducing these services throughout this course.</p>
+
+    <h3>Implement Elasticity</h3>
+
+    <p>- Elasticity is one of the most important concepts the cloud brings to the design of hardware and software systems. Elasticity refers to the ability to scale cloud resources be it up, down, in, or out. This scaling can be achieved in a few ways. One way is to scale components on a regular fixed basis. For example, hourly, daily, or weekly. This might work if an application has highly predictable traffic patterns.</p>
+
+    <p>For example, if traffic increases dramatically during normal business hours, but slows way down at night, this might allow for scaling of resources at specific time intervals to accommodate this pattern. Another method is to scale components in anticipation of an expected event. This typically involves scaling out, or up, due to some known marketing campaign or event where sharp increases of demand are expected. Yet another method is to set up monitoring of certain metrics. For example, CPU utilization, or network IO.</p>
+
+    <p>If these metrics breech certain thresholds, components can scale automatically and immediately either out or in, based on whether the metric rose above, or fell below, some predefined threshold. This way the system is continuously matching supply with demand. Regardless of the method, in order to take full advantage of scaling, application deployment processes need to be automated. System configuration and application design must also be adjusted to accommodate such scaling.</p>
+
+    <p>AWS provides services to help with all of this as well. The tools provided make automating deployment processes straight-forward. And doing so helps reduce errors, and ensures efficient scaling methods can be utilized. One of the keys to automating application processes is the concept referred to as Bootstrapping. Bootstrapping refers to creating a self-sustaining start up process that can run on it's own. In the context of AWS, it typically means the process needed to get applications up and running on an EC2 instance.</p>
+
+    <p>I'll be taking a deeper dive into the topic of Bootstrapping soon.</p>
+
+    <h3>Decouple your components</h3>
+
+    <p>- [Instructor] Loose coupling refers to a design principle concerned with minimizing dependencies between components in order to improve the scalability of applications. The idea is to strive for a system where if one of the components in the architecture were to fail, the other components keep marching happily on as if no failure occurred at all. A common example of this can be seen in a typical three-tier application architecture, where there are several web servers that connect to several app servers which in turn connect to a database layer.</p>
+
+    <p>The app servers are typically not aware of the web servers, and similarly, the web servers don't necessarily need to know much about the app servers, especially if they're connected with a load balancer or some other component that facilitates distribution. Achieving this loose coupling allows the components to independently scale. Applications are often designed such that the web servers make direct calls to the app servers. When web servers need to know which app server to connect to, then there is tight coupling between these components.</p>
+
+    <p>If the web servers instead connect to a load balancer, which will allow the connection to be distributed to any number of app servers, the dependency between the web server and the app server components is removed and the coupling between them loosened. There are several ways of configuring systems to minimize dependencies between the components. AWS provides many services to help decouple components. I'll be covering these later in the course.</p>
+
+    <h3>Optimize Your Performance</h3>
+
+    <p>- [Narrator] First thoughts about performance optimization, are likely to be about decreasing latency and increasing throughput in systems, making systems do more and go faster. Obviously, optimizing any system in this manner is important to the success of an application, but there is also the need to think about optimizing performance as it pertains to the ability to use Cloud computing resources efficiently. It's important to have a good understanding of all available services and how they might best fit into the system's architecture.</p>
+
+    <p>To sustain efficiency over time one must also keep abreast of the evolving technology in service offerings. Taking the time to get to know all the services offered is important. When an application use case calls for some sophisticated technology, investigate how the available services offered by AWS might help achieve the use case. If there is a PAS or SAS service offering that allows pushing much of the complexity of hosting and running the technology to the Cloud vendor, those are steps toward maximizing efficiency and performance.</p>
+
+    <p>Even with the knowledge and the resources to build, deploy, and maintain complex technologies, performance can be optimized by allowing the Cloud vendor to do it instead. Company resources can stay focused on tasks more centric to the business. And as familiarity with the service offerings increases continue to push the boundaries to see how far they can be taken within the constraints of the business use cases. When possible, consider using serverless architectures with an AWS in your application design.</p>
+
+    <p>Using services like S3 and CloudFront to host websites means not worrying about web servers at all. And services like Lambda to execute code eliminates the need for app servers all together. Storage options such as DynamoDB and Elasticache also remove the need for server setup and configuration. Continuous monitoring of applications is also required to ensure optimal performance is maintained. Amazon CloudWatch helps with this. CloudWatch provides the ability to monitor application metrics and send notification alarms when thresholds are breached.</p>
+
+    <p>These alarms can trigger automated actions by integrating with other services such as Amazon Simple Queue Service, Amazon Simple Notification Service, and Amazon Lambda. And monitoring is not just about watching existing applications. One must also monitor the every changing and evolving technologies AWS is continuously bringing to market. The AWS newsletter updates, the AWS blog, and the What's New section of the AWS website are all resources available to help keep up with newly launched features and resources.</p>
+
+    <h3>Keep Things Secure</h3>
+
+    <p>- [Instructor] When it comes to entrusting a Cloud service provider with hosting and storing business data, security is at the forefront of that consideration. Not fully understanding the differences between the security responsibilities of the Cloud provider versus those placed on the Cloud customer can result in unnecessary security risks of Cloud-based systems. Cloud architects must familiarize themselves with Cloud security practices, as well as be aware of exactly how the security responsibilities are shared between the Cloud provider and the Cloud customer.</p>
+
+    <p>When Cloud-based services first became available several years ago, they got a rather undeserved reputation for lacking security. Many of the perceived security issues with the Cloud stemmed from a lack of understanding that the customer is still responsible for a lot of the security implementation. The responsibility of security is shared between the Cloud provider and the Cloud customer. In general, the Cloud provider is responsible for the physical security of the buildings, the infrastructure, the equipment, and keeping different customers secure from each other.</p>
+
+    <p>On the other hand, the Cloud customer has to provide security at the network and at the application level, especially as it pertains to the application data. Data in motion needs to be protected as well. For example, when transmitting confidential information on the internet, a secure communication protocol, such as HTTP over SSL, should be used. A nice feature of Amazon's elastic load balancer service is that security certificates can be managed directly on the load balancer.</p>
+
+    <p>This makes taking advantage of HTTPS even easier across a distributed fleet of web servers. Data must also be protected when it rests. AWS provides options to encrypt data before storing on Cloud storage devices. Entire file systems can also be encrypted on AWS. File system storage comes in two general varieties, elastic block storage, which persists beyond the lifetime of the underlying instance, and local storage, which will not survive termination of the instance on which it resides.</p>
+
+    <p>Both elastic block storage and local storage can be encrypted. AWS provides other storage options allowing encrypted data as well. Another security practice that can often be overlooked is protecting and managing account excess credentials. Almost all AWS services have an available API. To use the APIs, security credentials called access keys are needed. The AWS access key has two parts to it, a public access key ID and a secret access key.</p>
+
+    <p>When using the API, the secret key is used in the request for authentication. Therefore, all API requests sent from the public internet should be sent over HTTPS. Rather than storing the secret key as part of an application code bundle, the application should be configured such that this value could be passed in as input during the launch of the application. Encrypting this information before sending should also be considered. Another approach would be to make use of roles within the identity and access management service.</p>
+
+    <p>Instances can be launched in an IAM role, and as such, the instance will have access to the credentials and permissions associated with that role. If a secret access key becomes compromised, a new access key should be created. It's recommended to rotate keys often to ensure an unknown or undetected compromised key will not live forever. IAMs should also be used to manage access control. IAM is the service used in AWS to create users and manage their permissions.</p>
+
+    <p>Rather than handing out root account information to everyone that needs access, it is recommended to create separate users for each person needing access and only providing the access to the services explicitly needed. Securing the business application itself is also the responsibility of the Cloud customer. AWS provides security groups which act as firewalls to AWS resources. Resources must be locked down and restricted only to the specific users, applications, and other resources that really require access.</p>
+
+    <p>Also, all application code installed by the customer must be updated and patched by the customer as well. Basically, all of the pre-Cloud application security practices still apply in the Cloud. This was just a brief security overview. I'll be taking a deeper dive into the tools AWS provides to help secure Cloud-based systems later in the course.</p>
+
+    <h3>Optimize for Cost</h3>
+
+    <p>- [Instructor] Cost is often an area of optimization that can be overlooked and sometimes easy to forget about when first exploring and experimenting with Cloud services. At least that is until a first surprise bill is received. Cost optimization is the ability to avoid or identify and eliminate unneeded costs. When thinking about cost optimization there are a few things to keep in mind. Embrace the consumption payment model provided by AWS.</p>
+
+    <p>Almost every service offered by AWS has a pay as you go model available. This means Amazon only bills for services actively being used. Due to the elastic nature of the Cloud, the number of actively used resources can continually grow and be optimized. Cost optimization is about ensuring to use only the resources that are needed. Supply needs to match demand. One common example is the use of test servers during an application development process.</p>
+
+    <p>These servers typically are only needed during the work day and could be turned off at night. These resources are billed by the hour, so comparing the 40 hours in a work week to the 168 hours in a full week, there is a potential cost savings of 75%. In addition, AWS has a service called Auto Scaling which allows the adding and removing of resources exactly as needed an approach that will always ensure supply matches demand.</p>
+
+    <p>Attention must also be paid to ensure cost effective resources are being utilized. For example, ensuring the right EC2 instance size is being used to match the requirements. There are many different types and sizes of EC2 instances all of which have different price points. Even after ensuring supply and demand are matched and resources are being utilized in a cost effective manner, continuous monitoring is required to continue to optimize over time.</p>
+
+    <p>AWS provides tools such as cost calculators, detailed billing reports, trusted advisor recommendations, and billing alerts to help eliminate surprise bills, stay on top of spending, and make cost saving suggestions. This was just a brief overview. There is an entire chapter dedicated to optimizing for cost later in the course.</p>
+
+    <h2>Design for Failure</h2>h2>
+
+    <h3>Virtual Servers, EC2, and Elastic IP</h3>
+
+    <p>- Amazon Elastic Cloud Compute, or EC2, can be thought of as "The Servers in the Cloud". When building applications on top of cloud infrastructure, the need for servers will likely arise. Depending on the application and use case, big powerful servers may be required, and in other cases, smaller, less powerful ones may suffice. The application may need just a few servers, or it could require several hundred.</p>
+
+    <p>Regardless of the exact size and quantity, most applications built in the cloud require some servers, and EC2 is the service that provides the servers. The elastic nature of this compute service makes the choice between big versus small, and few versus many an easy one because this can quickly be changed when using AWS. Elastic IP addresses are static IP addresses designed for dynamic cloud computing. An elastic IP address is created at the account level and is not specific to a particular server instance.</p>
+
+    <p>When a new elastic IP is created within an account, the account controls this access until a choice is made to explicitly release it. Unlike a traditional IP address, and elastic IP address allows for an easy remap of a public IP to any instance in the account. Take for example a web application on a server with a public IP address. In this example, the domain is somedomain.com. There is a DNS server somewhere that holds the authoritative mapping of this domain to the IP address.</p>
+
+    <p>So, what happens if this server dies? Using traditional hosting and a traditional static IP, this web application will be down. The next step to deal with this emergency would be to have a data technician replace the server, or configure a new one. Even if the architecture was such that another server was standing by in anticipation of this failure, this new server would have a different IP address, which means the DNS setting would need to change. Then, there is waiting on DNS to propagate before the application is back available.</p>
+
+    <p>With Amazon EC2, and elastic IPs, this failure can be handled differently. Since the elastic IP is not tied to a specific server, but rather to the account, when disaster strikes, one can simply remap the association of the IP from the failed server to a new replacement server. No need to get any data technicians involved, and no need to make any DNS changes. Designed for failure, lesson #1.</p>
+
+    <p>Fail over gracefully using elastic IPs. Use elastic IPs to quickly remap and fail over to another set of servers so that web traffic is routed to the new servers. This works great for handling emergencies, but also works well for rolling out new versions of hardware and software.</p>
+
+    <h3>Regions and availability zones</h3>
+
+    <p>- [Narrator] EC2 instances can be launched in one or more geographical regions. Each region is a geographically independent collection of AWS resources. AWS currently operates in 16 geographic regions around the world with more coming online all the time. These regions are distributed worldwide within five primary land areas: North America, South America, Europe, Asia, and Australia.</p>
+
+    <p>There are six regions in North America: US East, located in Virginia, US East, located in Ohio, US West, located in Northern California, US West, located in Oregon, one in Central Canada, and a region called Gov Cloud. The Gov Cloud region is designed to allow US government agencies, contractors, and their customers, to move highly sensitive data into the cloud by addressing their specific regulatory and compliance requirements.</p>
+
+    <p>There are three regions located in Europe: Ireland, London, and Frankfurt. And there is one located in South America, which is in San Paulo. And there are six regions in the Asia Pacific area: one in Singapore, and one in Sydney, and one in Tokyo, one in Beijing, one in Mumbai, and one in Seoul. AWS customers choose the region into which to launch their services.</p>
+
+    <p>Regions are independent of one another, and there is no data replication between them. The customer can decide to launch services in more than one region. Regions can help with very strict high availability and disaster recovery requirements that specify the need for redundant systems located very far apart geographically. While it's great to know that building a system spanning two regions is an option, most system requirements can be met while working within a single region.</p>
+
+    <p>Even within a region, geographical isolation can be achieved to meet high availability and disaster recovery needs. This is because each region consists of multiple locations called availability zones. Availability zones are distinct locations that are engineered to be insulated from failures from other availability zones. And provide inexpensive, low-latency network connectivity to other availability zones in the same region. Think of these as distinct data centers that are connected by a fast fiber network.</p>
+
+    <p>Just within North America, there are six regions available, and each of these regions consists of multiple availability zones. Looking at just US East Virginia region, which is the oldest of the regions, it has five availability zones, more than any other region. The rest has either two or three. Every region has at least two availability zones. Each of these availability zones are connected by a fast fiber network connection, and each are physically isolated from each other.</p>
+
+    <p>A local disaster, such as a fire, flood, tornado or other physical breach occurring in one availability zone, will not affect the other zones. So using multiple availability zones within a region provides an excellent option for meeting high availability and disaster recovery needs. Designed for Failure: Lesson #2 Utilize multiple availability zones and even multiple regions if required. Availability zones are conceptually like logical data centers.</p>
+
+    <p>Deploying system and application architecture to multiple availability zones ensures high availability and ease of disaster recovery.</p>
+
+    <h3>The Amazon Machine Image (AMI)</h3>
+
+    <p>- The next topic to cover in the exploration on how to design for failure, is Amazon Machine Image, or often shortened to AMI, or sometimes pronounced "Ahmee". An AMI is basically a packaged environment containing a software stack, along with all the necessary parts to properly set up and boot up an EC2 instance. AMIs are the unit of deployment. AMIs are specified when launching an instance, and as many instances can be launched from an AMI as needed.</p>
+
+    <p>An AMI typically includes the following. A template for the root volume for the instance, for example an operating system, an application server, and supporting application libraries. Launch permissions that control which AWS accounts can use the AMI to launch instances. A block device mapping that specifies the elastic block storage volumes to attach to the instance when it's launched. Amazon EC2 provides a number of tools to make creating an AMI easy, including the AWS management console.</p>
+
+    <p>Let me show the management console now to make all of this a little more concrete. Here I have logged into the AWS management console in the browser. The console shows all of the AWS services available. AMIs are part of the EC2 service. I get there by going to the EC2 service and clicking on AMIs in the left-hand navigation. From this view, I see a list of available AMIs. This default view shows me the AMIs that I have created, but I can filter by other AMIs.</p>
+
+    <p>I can look at the ones that are public images, or private images. And if I click into the search box, it provides me a long list of filters from which I can choose to find other available AMIs. When creating a new EC2 instance, an AMI is specified that is responsible for setting up and booting up that instance. Let me demonstrate. If I go back over to the left-hand menu to instances, and click there, I can go immediately up here to launch instance, which will launch an instance for me.</p>
+
+    <p>The very first step that I have to do in launching an instance, is choose an AMI. And here, along the left, there are tabs that show me different AMIs available. This first tab, quick start, are all of the packaged Amazon AMIs. The next tab, my AMIs, are exactly as you might think. AMIs that I have previously created. This next tab offers AMIs that are available in the AWS marketplace.</p>
+
+    <p>The AWS marketplace is a catalog that contains a curated section of the open source and commercially available software from well-known vendors. These AMIs have undergone vetting for quality and are generally available for purchase. Then, there are community AMIs, which are contributed by individuals and developed by teams for the purpose of sharing development projects. Generally, once an EC2 instance is up and running, and configured exactly as needed for a specific application.</p>
+
+    <p>An AMI is created of that instance. This AMI is then used to easily recreate the instance as many times as needed across multiple availability zones. This can be done programmatically using the API, or the console. So let me demonstrate that too. I go back to the AMI listing by going back to services, EC2, and AMIs on the left-hand menu.</p>
+
+    <p>To launch a new instance from an existing AMI, all I need to do is right click that AMI and choose launch instance. Right click it and choose launch, I can also choose the AMI I'm interested in and go to actions and choose launch. And in just a matter of minutes, I'll have a new instance based on that AMI up and running. Okay, I'll be showing all of this in more detail again later in this course. Hopefully seeing this in the console now helps solidify the concept a little bit.</p>
+
+    <p>Design for failure, lesson number three. Maintain an Amazon Image so that you can restore and clone environments very easily across multiple availability zones.</p>
+
+    <h3>Elastic Load Balancing (ELB)</h3>
+
+    <p>- Elastic Load Balancing is another AWS service available to assist in designing for failure. An Elastic Load Balancer in AWS is a component for balancing network traffic across multiple EC2 instances within multiple availability zones. This allows for greater levels of fault tolerance and high availability in applications. And the elastic part is built right into the service. It scales its request handling capacity to meet traffic demands, and does this automatically.</p>
+
+    <p>The Elastic Load Balancer, or ELB for short, has a few key characteristics. It can handle the routing and load-balancing of HTTP, HTTPS, and TCP traffic to your EC2 instance. It allows health checks to be configured so it can determine whether or not the instances to which it's routing traffic are healthy and should be used. It can automatically and dynamically grow and shrink with the demand patterns of an application.</p>
+
+    <p>When creating a new ELB, a single CNAME is also created to use for DNS configuration. An interesting thing about this single CNAME is that it does not change even as the ELB scaling is happening. Here is a representation of an ELB routing traffic to two availability zones. The single CNAME ELB component actually resolves round robin DNS to ELB IP addresses in each availability zone.</p>
+
+    <p>As traffic increases, AWS adds IP addresses to the ELB's DNS entry, and continues to round robin requests across the multiple ELBs. Of course, as traffic decreases, it removes the IP addresses from the ELB's DNS entry, thereby reducing the number of load-balancing components in the system. ELBs are themselves load-balanced, and Amazon takes care of this for us. Design for Failure: Lesson #4 Use Elastic Load Balancing to easily distribute an application across multiple resources and availability zones to ensure it remains up and running even when individual components of the application fail.</p>
+
+
+    <h3>Cloud Monitoring: Cloud Watch</h3>
+
+    <p>- It would be very difficult to design for failure if there was no way to be alerted as to when a system is failing or might be approaching failure. Amazon provides services to assist in this. One such service is CloudWatch. CloudWatch is a resource and application monitoring and alert service that can help provide support for cloud-based applications. CloudWatch allows for the monitoring of resources immediately and automatically, without the need to install or configure any software.</p>
+
+    <p>It allows visibility into resource utilization performance and traffic load patterns. It provides tools to gather and graph resource metrics such as CPU utilization, Disk I/O, and network traffic. Alarms can be set when metrics breach certain thresholds. These alarms can then trigger actions, such as sending notifications, or starting processes to automatically handle the issue. By utilizing the API, CloudWatch can also be used to monitor custom metrics generated by custom applications running in the cloud.</p>
+
+    <p>Most of the services available in AWS support CloudWatch as a monitoring tool. And most allow the use of CloudWatch for free with an option to pay more for detailed monitoring. Opting to pay a little more for detailed monitoring allows monitoring at higher frequency intervals than with the free plan. Detailed monitoring also provides access to a larger number of pre-defined metrics, and the ability to monitor aggregate metrics across groups of similar resources.</p>
+
+    <p>Design for Failure: Lesson #5 Utilize Amazon CloudWatch to get more visibility and take appropriate actions in case of hardware failure or performance issues.</p>
+
+    <h3>Elastic Block Storage (EBS)</h3>
+
+    <p>- [Instructor] Elastic Block Storage, or EBS for short, are storage resources that are created separately from EC2 instances. Unlike local instance storage, data stored on EBS volumes can live beyond the life of the instance itself. EBS volumes are attached to EC2 instances. Once attached, they can be used like any other block device. Running a file system for data storage is a good example of using this type of storage device.</p>
+
+    <p>There are two types of EBS volumes: standard volumes and provisioned IOPS volumes. Provisioned IOPS EBS volumes allow for the specification of consistent performance parameters. Standard and provisioned IOPS volumes differ in price and performance, and choosing one over the other will depend on the specific application needs and budget. With EBS, volumes can be created up to one terabyte in size and attached to EC2 instances.</p>
+
+    <p>Multiple EBS volumes can be attached to a single instance. I/O performance is specified by creating provisioned IOPS volumes. EBS volumes can be formatted with the file system and used as file storage. Point-in-time snapshots of EBS volumes can be created and persisted to Amazon S3. These can then be used to instantiate new volumes. This allows application data to be copied and replicated across AWS regions.</p>
+
+    <p>CloudWatch can be used to monitor performance on EBS volumes. This provides insight into metrics, such as throughput and latency. The point-in-time snapshot feature is important with regard to designing for failure. Because this allows volumes and data to easily be shared and copied across zones and regions. When created, EBS volumes are stored on S3. Each snapshot is stored incrementally, which means only the blocks that have changed since the last snapshot are saved.</p>
+
+    <p>Amazon only charges for the changes, so if a device has 100 gigabytes of data, but only five gigabytes have changed since the last snapshot, the subsequent snapshot consumes only five additional gigabytes. When a snapshot is deleted, only the data not needed by any other snapshot is removed. All active snapshots contain all the information needed to restore the volume to the instant at which the snapshot was taken.</p>
+
+    <p>Snapshots can be used to create new volumes and new locations. Once on S3, snapshots can be copied to additional availability zones. And new EBS volumes can be created there. And similarly, they can be created across regions. Restored snapshots can be accessed immediately. When creating a new volume from a snapshot, all of the snapshot data stored in S3 has to be transferred to this newly created volume.</p>
+
+    <p>This takes time. However, the volume can be used right away. The restoring of new volumes from EBS snapshots implements a lazy loading approach. Any data initially being accessed will be prioritized during the transfer. And if not already there, it will be immediately retrieved upon the first request. Snapshots are also useful for resizing volumes. When creating a new Amazon EBS volume based on a snapshot, a new size can be specified.</p>
+
+    <p>Design for failure lesson number 6. Utilize EBS to keep persistent data independent of EC2 instances. And take advantage of the portability and power of incremental EBS snapshots to replicate data across availability zones and regions.</p>
+
+    <h3>Manage Relational Database Serice (RDS)</h3>
+
+    <p>- [Instructor] Arguably, one of the most important parts of an application where failure is a big concern is with the persistent data. For many applications, persistent data is stored in a relational database. When this part of an application fails, safe and quick recovery is very important. Amazon Relational Database Service or simply RDS provides a way to set up, operate, and scale a relational database in the cloud.</p>
+
+    <p>RDS speeds the development process by allowing quick access to a full featured database engine without the need to install or configure the software. It also helps ease the burden of ongoing database administration by taking on common tasks like backups, patch management and security management. RDS is also configured in such a way to help achieve high availability and fault tolerance requirements. Using RDS is straightforward.</p>
+
+    <p>First, a database instance is created using the web console or the API. When doing so, the engine type is specified. Currently, RDS supports the following engine types, MySQL, Postgres, Aurora, MariaDB, Oracle, and SQL Server. Then the DB instance size is specified including needed memory, storage capacity, and processing power.</p>
+
+    <p>Once created, CloudWatch can then be set up to monitor the general health of the RDS instances. Unlike with EC2 instances, RDS does not allow direct access to the servers running the database engine. While this may at first seem like a limitation, it's actually one of the benefits of using RDS. It means turning over a lot of the administrative tasks to Amazon. Amazon RDS will automatically apply security patches.</p>
+
+    <p>It also takes care of backups, storing the backups for a configurable retention period, and enabling point-in-time recovery from these backups. RDS can also be deployed in multiple availability zones which means high availability and fault tolerance requirements can be met by having your database tier geographically distributed. For supporting database engines, RDS allows for the creation of read replicas of the database for increased performance and scalability.</p>
+
+    <p>All of these tasks can be very challenging to achieve while self-managing a database solution. Allowing Amazon to handle these complex administration and configuration tasks allows companies to focus their resources on building what really matters for their business. Design for failure lesson number seven. Use RDS to simplify relational database security, administration, backups, redundancy, failovers, scalability, and geographical distribution.</p>
+
+    <h2>Impement Elasticity: Automate Infrastructure</h2>
+
+    <h3>Understand Bootstrapping</h3>
+
+    <p>- [Instructor] Bootstrapping is an important concept to understand for taking advantage of the cloud's elastic nature, which is going to drive some of the biggest benefits realized from a cloud-based environment versus a traditional one. Bootstrapping refers to creating a sustainable, start up process that can run on its own and in the context of AWS it typically means the process needed to get an application up and running on an EC2 instance. Application instances should be able to come online and then ask questions about who they are and what role they're supposed to be playing in the application.</p>
+
+    <p>Am I an app server? Am I a database server? Then, based on understanding what role its playing an instance should be able to retrieve needed resources such as code files, configuration information and utility scripts then register itself as a component in the system. The actions involved during a bootstrap phase can be anything and should be everything needed to have an instance be ready to play its role in the application.</p>
+
+    <p>An example bootstrap process could be as follows: mount the needed drives, start any of the needed services, update files, or pull down needed scripts, get the latest version of supporting software, and apply any needed software patches and then, perhaps, register itself with a load balancer to begin receiving traffic. The tools needed to achieve this bootstrapping depends on the application environment and specific application requirements.</p>
+
+    <p>Some examples are running custom scripts on the servers. When an instance starts up, custom scripts can run to set configuration settings, start services and apply software updates. To aid in this effort, AWS offers a few tools to help run custom scripts as part of a bootstrapping process. One of the tools AWS offers is access to the instance metadata. This data can be accessed from within the instance, directly from the command line.</p>
+
+    <p>So, let me take just a moment to demonstrate this. Here, I have launched an EC2 instance and I am accessing the command line on the instance via SSH. Don't worry how I got here at this point. I'll be demonstrating launching and accessing EC2 instances later in this course. Right now, I just want to show this instance metadata. All EC2 instance data is available at the same end point over HTTP. On a Linux instance, you can use something like the curl command to get the data.</p>
+
+    <p>I'll use curl and list out available metadata options. I can do so right here from the command line. Just type in: curl http :// 169 .254 .169 .254, followed by the word latest and then followed by the word meta-data. Running this command returns a listing of all the instance meta-data that's available on this instance.</p>
+
+    <p>It's quite a long list, so, I'll look at just a couple. For example, say I want to get the instance's host name. That is the IPv4 DNS Host Name of the instance. I can use the same URL end point and just type in hostname at the end. So, using the same URL I used before, I use the command, hostname, and we see this command out of the listing too and just to add some readability to the output I'm going to just echo out a new line so that we can read that better, off the command line.</p>
+
+    <p>There it is, that's the IPv4 DNS host name of this instance. I could also take a look at, for example, the unique AMI id from which this instance was created. I use the same end point again but this time, I'll use the ami-id from the listing above. So, I'll type in ami id and, again, I'll echo out a new line for readability.</p>
+
+    <p>And there it is. That's the unique AMI id of this instance. And then, for example, I could also look at the unique instance identifier that this instance has associated with it. To see that, I just type in instance, dash, id. So, again, I'll back up, here and I'll use the command instance id and again, there it is. All of this data is accessible by simply accessing this same end point from anywhere on the instance.</p>
+
+    <p>These values can also be accessed from within scripts that run on the instances. This data can help with a bootstrap process. Another tool to help with bootstrapping, offered by AWS, is something called Cloud-init for Linux servers or EC2Config for Windows servers. These allow custom scripts or any shell commands to be specified and run during the instance start up process. This makes it easy to specify server bootstrap needs and they will automatically be run at the appropriate time during the overall instance start up life-cycle.</p>
+
+    <p>Later in this course, I will demonstrate using Cloud-init to script the setup of a new server and demonstrate the use of user data and Cloud-init to bootstrap a new instance. While writing and maintaining custom scripts for instance bootstrapping can work well for simple applications, there are other configuration management tools and services available that can come in quite handy when systems grow in complexity. Elastic Beanstalk, OpsWorks, CloudFormation and CodeDeploy are some examples.</p>
+
+    <p>Implementing elasticity lesson number one: take the time to write the scripts or configure management tools necessary to bootstrap instances. Automating this process will allow you to take advantage of the cloud's elastic nature.</p>
+
+    <h3>Autoscaling</h3>
+
+    <p>- [Announcer] Few AWS services could provide more benefit to implementing elasticity than Auto Scaling. Auto Scaling is a service focused on helping implement elasticity. Remember when I first talked about understanding elasticity? I used some graphs that demonstrated the issues that can occur when not allocating enough capacity? And, the waste that is generated, by allocating too much capacity in traditional environments? The solution was to take advantage of the elastic nature of the cloud.</p>
+
+    <p>Increase capacity exactly when load demands, and decrease capacity when load lightens. Always matching the right amount of capacity to meet demand. Auto Scaling is a service provided by Amazon, that makes this easy. Start by defining the conditions on which the application should scale out, or in; based on the number of desired EC2 instances. Then the auto scaling service will add or remove instances when these conditions are met.</p>
+
+    <p>Take for example, the web application architected as depicted here. This application is distributed across two availability zones. Because it has been designed for failure, and doing so achieves a high degree of fault tolerance. During periods of normal to light load, this application works fine with just these two servers. Now imagine the traffic starts to pick up a little. Cloud watch is being used to monitor the CPU usage on the servers, and will trigger alarms when the CPU levels on the boxes rise.</p>
+
+    <p>With Auto Scaling, a condition can be defined such that, if the CPU utilization rises above 75%, say for more than a minute, the application will automatically scale out, by having two more instances added. One in Zone A, and another in Zone B. This will likely result in lowering the CPU utilization across each server. If at any other time they again rise above 75%, two more instances will be added to accommodate the increase in demand.</p>
+
+    <p>This continues in such a manner, so that supply always matches demand. Since Auto Scaling has also been used to set up a condition, such that, if the average CPU utilization drops below 35%, instances will be removed when load decreases. One from Zone A, and one from Zone B. This will continue to happen until it gets back down to a defined minimum number of instances. Customers are happy because demands were met, and the accounting department is happy, because only the needed resources were used, and only paid for when utilized.</p>
+
+    <p>Auto Scaling has three Primary Components to it. The first part is what is called the Launch configuration. This defines what to scale. This is where the EC2 instance size is defined. What AMI to use. What security group and other storage needs. Very much the same as all the configuration settings that need to be defined when launching a new instance. The second part is called an Auto scaling group. This defines where to launch the instances, and also defines limits on the number of instances to launch, should certain events occur.</p>
+
+    <p>One of these is a desired capacity number. Auto Scaling will work to keep your number of instances equal to your desired capacity. So, with just these two components defined, Auto Scaling will provide some fault tolerance. The third component is optional, but is really important to fully implement the real time elasticity. It is called a Scaling policy, and it defines the when and under what conditions instant scaling should happen.</p>
+
+    <p>This is where cloud watch alarms can be defined. Based on certain metrics breaching specified thresholds. Referring to the initial example, it is in the Scaling policy where the conditions are defined to have two or more instances added if the average CPU utilization rises above 75%, and to have instances removed, if that same metric falls below 35%. It's a good idea to have both a scaling out, and a scaling in policy defined, in order to fully take advantage of elasticity.</p>
+
+    <p>The system needs to scale out to handle increase in load, but also needs to scale back in, when load decreases, to keep costs low and avoid waste. Implementing Elasticity rule #2. Take advantage of the auto scaling service to greatly simplify the process of automating your scaling. This helps keep application users happy, and business costs minimized.</p>
+
+    <h3>Scalable Storage: S3 and Clound Front</h3>
+
+    <p>- [Instructor] Amazon offers different storage options to accommodate the different types of data needed to be stored in the cloud. Amazon EFS offers file storage, Amazon EBS and EC2 instance storage offers block storage, and Amazon S3 and Glacier offer object storage. S3 is an object store. In an object store, objects are stored in a flat organization which are referred to as buckets in S3.</p>
+
+    <p>These objects are retrieved by a unique identifier called keys. A key can be any string and can be constructed to mimic hierarchical attributes, meaning that it can sort of be made to look like a directory structure but it should not be confused with one. Objects are really any blob of data, such as backups and archives, log files, videos, images and audio files. This is typically contrasted with a traditional file storage system where files are organized in a directory hierarchy and housed in a central repository of metadata about the files.</p>
+
+    <p>This metadata and structure is then used to search on and retrieve the information. In object storage, objects are stored in a non-hierarchical flat, address space which allows for almost endless scalability and very fast object retrieval. Of course, there are some feature trade-offs with object storage compared with file storage. For example, S3 does not natively offer the ability to search across all objects in storage.</p>
+
+    <p>S3 is built to be incredibly durable. This is achieved by redundantly storing objects on multiple devices across multiple availability zones in an Amazon S3 region. For non-critical data that may not require these extremely high levels, Amazon also offers reduced redundancy storage, or RRS. This is an option which reduces storage costs and can be used for objects that could easily be reproduced in the event of a failure.</p>
+
+    <p>For example, RRS could be a cost-saving option when storing multiple sizes of an image from an original or different video encodings from an original video source. Store the original on S3 and use RRS for the thumbnails. S3 provides, in theory, unlimited storage capacity. It will scale and grow as demanded by your storage needs. There is no defined limit to the amount of content you can store.</p>
+
+    <p>There is, however, a five terabyte limit on the size each object can be but not a limit on the number of these objects you can store. Objects can be accessed via a Rest API which makes it easy to implement in almost any application. One thing to note about S3 is that S3 object storage works on an eventual consistency model. While the objects stored in S3 are highly available and highly durable, the data consistency is achieved only eventually.</p>
+
+    <p>The high availability and durability is achieved by replicating the data across devices both within an availability zone and across availability zones. Whenever an update is made to an object there is a period of time until the change is propagated to all of the replicas before requests will return the latest version. Take, for example, deleting an object in S3. It may take some time to propagate to all the replicas and therefore there is a brief period of time where objects could still be returned even after a delete request has been made.</p>
+
+    <p>So, while object storage is a great fit for data that doesn't change much, like backups and archives, log files, video images and audio files, this eventual consistency can make object storage unsuitable for data that changes frequently. Another object storage option available within AWS is Amazon Glacier. The Glacier storage is like an extension of S3 but is intended for archiving data, for data that will be accessed very infrequently and where retrieval time of several hours is acceptable.</p>
+
+    <p>The same extremely high durability is guaranteed with Glacier just as with S3 but the storage costs are much less. Objects in Glacier are managed through S3. Objects are not associated or managed with Glacier storage directly upon upload. Rather, existing Amazon S3 objects are transitioned to Glacier when the data is ready for archiving. Implementing elasticity rule number three: take advantage of the available object storage options in AWS to improve scalability, availability, durability and performance of storing and accessing application assets.</p>
+
+    <h3>Elastic Beanstalk</h3>
+
+    <p>- [Instructor] AWS provides several services to assist with implementing elasticity, and in deployment, and configuration management of applications. There are trade-offs between them, depending on the amount of control versus convenience desired. Elastic Beanstalk is on the convenience end of the spectrum. Elastic Beanstalk is an example of one of AWS' fully managed services. It allows you to simply upload an application into AWS, and it takes care of the rest.</p>
+
+    <p>It handles provisioning of all the needed resources to run an application in the cloud. It takes care of capacity provisioning, load balancing, auto scaling, and application health monitoring. AWS is continuously adding to the list of platforms supported by Elastic Beanstalk. At this time, Elastic Beanstalk supports the programming languages Java, PHP, Python, Node, Ruby, the .NET environment, Java SE, Docker containers, and Go.</p>
+
+    <p>Beanstalk also takes care of automatically pushing application and server logs to S3. One important feature of Elastic Beanstalk is that full control over the AWS resources that have been created is retained. So while Elastic Beanstalk does offer a lot of convenience, and provisions all of the resources, control does not have to be fully relinquished. With Elastic Beanstalk, both the resources supporting the application, and the software running on the instances, can be controlled.</p>
+
+    <p>When using Elastic Beanstalk, the first step is to write code. Application code is managed using whatever existing application development process in place. When the application is ready to be deployed, a version is saved with a specific label, such as version 1.0. This version is then stored in an Amazon S3 bucket. For example, an application version might refer to a specific Git deployment of a PHP application.</p>
+
+    <p>Elastic Beanstalk provides a number of tools to help with creating application versions. The AWS management console, Git deployment with the command line interface, AWS Toolkit for Visual Studio, and AWS Toolkit for Eclipse can all be used. Once the application version is available in S3, Elastic Beanstalk can deploy it. At which point, Elastic Beanstalk launches it into an environment. An environment represents all of the AWS resources created specifically to run the application.</p>
+
+    <p>For example, a load balancer, an auto scaling group, EC2 instances, and the needed security groups. Elastic Beanstalk automatically handles the messy details of provisioning needed capacity, load balancing, auto scaling, and application health monitoring. Elastic Beanstalk will send a notification when it's done creating the environment. And when complete, Elastic Beanstalk provides the application with the URL. This can be typed into a web browser to access the running application.</p>
+
+    <p>When updates to the application code are made and a new version is ready to deploy, the new version can be deployed to the existing running environment. This also makes it very easy to roll back to a previous version of your application should that ever be necessary. Part of the convenience Elastic Beanstalk provides is due in part to the many predefined default configuration settings used when creating the environment. However, customizations to the environment and to the software that runs on the EC2 instances can be made.</p>
+
+    <p>Default settings can be changed directly in the management console. Settings such as EC2 instance types, adding an RDS or DynamoDB database service, enabling HTTPS on the load balancer, and adjusting auto scaling settings are just a few of the changes that can be made. To alter application settings and software configurations that run on EC2 instances, configuration files can be added to a specifically named folder in the application code versions, which are run upon deployment.</p>
+
+    <p>To use configuration files, a folder named .ebextensions is created at the top level of a project source code. Then files with the extension .config are added to specify options, as shown here. For example, when using a load balancer, a URL is often used as the health check for the instances. The load balancer needs to know if an instance is no longer healthy, so it can prevent sending traffic to that bad instance.</p>
+
+    <p>The configuration file shown here could be used to tell Elastic Beanstalk to set the application's health check to /healthcheck. This configures the elastic load balancer in the Elastic Beanstalk environment to make an HTTP request to the path, /healthcheck, to each instance to determine whether or not it's healthy. Our example used JSON, but configuration files can be in either YAML or JSON format.</p>
+
+    <p>And as an added bonus, there is no additional charge for the AWS Beanstalk services. You only pay for the resources that Elastic Beanstalk launches for you. Implementing elasticity rule number four, consider taking advantage of Elastic Beanstalk to fully manage application deployment and infrastructure in the cloud. And let Beanstalk take care of the scalability, high availability, and high performance requirements.</p>
+
+    <h3>OpsWorks</h3>
+
+    <p>- [Instructor] OpsWorks is one of several full application management and automation services offered by AWS that sits somewhere in the middle of the spectrum between convenience and control. It allows for management and automation of very customized applications of most any shape or size. OpsWorks has two offerings, AWS OpsWorks for Chef Automate, and AWS OpsWorks Stacks. The focus here is on AWS OpsWorks Stacks.</p>
+
+    <p>In AWS OpsWorks Stacks, things are conceptually divided into stacks and layers. A stack is a group of servers that solve a certain problem for you. The stack organizes all of the needed infrastructure to serve a similar purpose. For example, in thinking of the different environments needed for application software development such as test, staging, and production environments. These can be thought of separate OpsWorks stacks.</p>
+
+    <p>In terms of a traditional three tier application architecture, each stack would contain the needed web application, app servers, and database servers to run your application. The servers within these stacks get grouped into roles called layers. A layer is a sort of blueprint for a set of instances specifying information such as the instance settings, resources, and security groups. Examples are things like a DB layer, caching layer, application layer, web server layer.</p>
+
+    <p>Every server within a layer should be configured as a defined role. And OpsWorks takes care of launching the server into that role. The configuration in OpsWorks is done by writing Chef recipes. Chef is a well-known and popular open source configuration management tool. Chef configuration recipes are run on the server and can be triggered and executed during specific server lifecycle events that OpsWorks exposes. There are two important and primary parts to what the OpsWorks service provides, the OpsWorks provisioning engine and the OpsWorks agent.</p>
+
+    <p>The provisioning engine is responsible for the backend integration with other AWS services. It launches EC2 instances, attaches EBS volumes, configures ELBs, configures auto scaling, and handles auto healing. It's the provisioning engine that allows OpsWorks to automate the full application infrastructure. The OpsWorks agent is software that runs on the instances and is responsible for executing all of the on host configuration.</p>
+
+    <p>OpsWorks uses Chef for this and it is installed on every instance. It executes different commands on the instance that get defined by the Chef recipes. It sends keep alive messages for auto healing, which is a feature OpsWorks provides that can replace a failed instance within a layer if it is determined to be unhealthy based on these keep alive messages. This agent can also help to monitor host level metrics to be sent to CloudWatch.</p>
+
+    <p>The OpsWorks agent will execute different Chef configuration recipes at different times using a set of lifecycle events provided by OpsWorks. Set up, configure, deploy, undeploy, and shut down. Specifying which recipes are associated with which lifecycle events is part of configuring OpsWorks. Once defined, OpsWorks takes care of running them at the appropriate time.</p>
+
+    <p>The set up OpsWorks lifecycle event occurs once on a new instance just after successfully booting up. The configure event occurs on all of the stacks instances when any one of the stacks instances enters or leaves the online state. For example, the configure event is used when building distributed systems for any system that needs to be aware of when new instances are added or removed from the stack. You could use this event to update a load balancer when new web servers are added to the stack.</p>
+
+    <p>The deploy event occurs whenever you deploy an app. An app represents code that you want to run on an application server and part of what OpsWorks provides is managing the complexity of app deployments to the multiple servers within your stacks and layers. The undeployed event occurs when you delete an app from a stack and the shut down event occurs when an instance is stopped. Putting all of these concepts together, here is a high level overview of using OpsWorks.</p>
+
+    <p>First, a stack is created. Then, one or more layers are defined. Then, the application code to be run and launched into a layer is configured. Then, a Chef cookbook is created and recipes written. These recipes are then associated with specific OpsWorks event lifecycles such as setup, configure, shut down, etc. Then instances are launched into the defined layers. Finally, the applications are deployed onto the servers defined at each application hosting layer.</p>
+
+    <p>So, implementing elasticity rule number five, when dealing with an application architecture that is more complex than what Elastic Beanstalk supports, or simply, if more granular deployment and setup control is desired, consider using OpsWorks. OpsWorks helps manage the complexities of the application architecture, configuration management, and deployment management, and eases the ability for AWS applications to take advantage of the elastic nature of the Cloud.</p>
+
+    <h3>CloudFormation and CloudFormer</h3>
+
+    <p>- (Voiceover) Another service offered by AWS to consider when designing application deployment and configuration management processes to best realize designing for elasticity is something called CloudFormation. AWS CloudFormation gives developers and systems administrators a easy way to create and manage a collection of related AWS resources. It allows for the definition of an entire application stack to exist as either a single or set of text based template files.</p>
+
+    <p>Version controlled systems can then be used to manage different versions of the application infrastructure. Here is a representation of a full stack one might have on AWS. It's pretty clear that this is using a combination of many different AWS resources and solutions to architect the system. It's load balancing across two web application servers. Which are communicating with an app server tier deployed using elastic beanstalk.</p>
+
+    <p>Also this app here is using both elastic cache, which is an in memory distributed cache storage service. And RDS which has been deployed in multi availability zone mode, using a cluster of rereplicas. There's a lot going on in this application stack. CloudFormation allows you to condense all of this down to a single or set of descriptive text based files. Which look something like this here.</p>
+
+    <p>You can then use these files to quickly and consistently rebuild the entire stack. This is a basic CloudFormation template. These templates use Jason to describe the needed specifications. Each template has a resources property which are the components or services you need to create. You specify a logical resource name which can be anything that makes sense to the company or the project. Each resource has a type property.</p>
+
+    <p>Which as it's name suggests identifies the type of AWS resource this is referring to. Here we see it as specifying Ec2Instance as the resource type. Properties of the resource are then specified, which of course will depend on the type of resource. In this case, since the resource type is an Ec2Instance, the properties are what is needed in order to launch the new instance. Things like which AMI identifier to use, and the instance size to create.</p>
+
+    <p>The same things that must be specified when launching an Ec2Instance from the management console. Another thing to note is that access keys must be specified when creating resources. And so far in this example, this value has been hard coded into the template. That can certainly be a problem if these template files would be shared with other users or used in different accounts. A better approach would be to allow each user to pass in their own specific values to variable properties.</p>
+
+    <p>CloudFormation templates allow for this. A parameters object can be defined in the template. And then declared parameters can be referenced as place holder values for the properties. The actual values will be passed in at the time this template file is being used to create the new resources. There is also an allowed values list that will restrict what the user could input. Providing even more control over how these template fil es can and cannot be used.</p>
+
+    <p>In fact this is only scratching the surface of what can be done with CloudFormation templates. And while the syntax and structure is fairly straightforward they can certainly get very complicated. Especially for stacks with a lot of different components. Luckily Amazon helps us out there as well with a tool called CloudFormer. To get started using CloudFormer, you would initially create the application stack via the console or API tools as normal.</p>
+
+    <p>CloudFormer helps to create a CloudFormation template from an existing stack. Then you create and launch a CloudFormer stack. CloudFormer is itself an AWS CloudFormation stack. It runs on a single micro instance and does not need any additional resources. The CloudFormer tool can then be used to create a CloudFormation template file from the existing stack. Then the CloudFormation stack is shutdown, as it is not needed beyond it's utility to help create the template files.</p>
+
+    <p>The final product is a CloudFormation template to be used as needed. Implementing Elasticity Lesson number five. Use CloudFormation templates to manage and version-control your entire AWS application stack, and easily replicate your full stacks to new environments, new accounts, or new geographical regions.</p>
+
+    <h3>CodeDeploy</h3>
+
+    <p>- [Instructor] Sometimes, all that is needed is the right, specific tool for the job. No more, and no less. When the job is nothing more than getting an application deployed to EC2 instances on AWS, CodeDeploy just may be the perfect fit. AWS CodeDeploy is not a fully managed application service like Elastic Beanstalk or OpsWorks, but rather what is sometimes referred to as a component service. It's more like a specific developer tool that AWS offers.</p>
+
+    <p>CodeDeploy is a service that coordinates application deployment across Amazon EC2 instances. CodeDeploy is not stack or language dependent and is built to work with any existing application files and deployment scripts. The service scales with AWS infrastructure and can be used to deploy to just one or many EC2 instances. One of the advantages to using CodeDeploy is that it's easy to adopt.</p>
+
+    <p>If a team already has a defined deployment process, and needs to simply get that working within AWS, CodeDeploy may be a great place to start. Or perhaps scripts are already written to handle deployment of an application to a single EC2 instance on AWS, and now that process needs to scale out to many instances. CodeDeploy can help here too. At the core of CodeDeploy is the concept of the application to be deployed. Applications within CodeDeploy have different revisions.</p>
+
+    <p>The specific revision is specified for each deployment. A revision is just a specific version of the application, including things like the source code files, or a compiled binary, and all other needed assets. These revisions can be stored in GitHub, or in an AWS S3bucket. The application revision answers the question, "What should be deployed?" The question "How the application should be deployed?" also needs to be answered.</p>
+
+    <p>A deployment configuration is the specification that outlines exactly how a deployment should proceed to a defined deployment group. The question "Where to deploy?" Must also be answered. These are defined as deployment groups, a deployment group is an EC2 instance, or set of instances, to which the application should be deployed. Instances can be added to a deployment group by specifying a tag identifier or an auto scaling group name.</p>
+
+    <p>So, CodeDeploy is told what to deploy by specifying an application revision, how to deploy by specifying a deployment configuration, and where to deploy by specifying the deployment group. CodeDeploy uses a single configuration file specifically named "AppSpec" to specify how to deploy the application. This is an example AppSpec file. It can be used to map files in the application to their host destination.</p>
+
+    <p>It is also used to specify commands that need to be run during the deployment process and at which specific phases in the deployment process these need to be run. CodeDeploy specifies several deployment lifecycle events that can be used to execute commands at different phases. This way, different commands can run at different times, allowing commands to run in a specific order, and according to which specific instance resources may be available.</p>
+
+    <p>Things such as starting an existing application or server, installing needed dependencies before starting, or performing any needed cleanup after installing. Putting this all together, here's the CodeDeploy flow. First, the application is coded and an App Spec file is created. Then, the application bundle including all files, assets, and the app file, are stored to S3 or GitHub. Then, the CodeDeploy service itself is configured, specifying an application revision and deployment group.</p>
+
+    <p>CodeDeploy will take care of creating and starting new instances if not already created to ensure the CodeDeploy agent is running on them. These agents then pull CodeDeploy to determine what revision should be deployed. When the agent determines a new revision has been specified for deployment, it grabs all the application files and executes all of the steps outlined in the App Spec file that is part of the application revision. Implementing elasticity rule number six, When dealing with an existing application, with existing steps or scripts for deployment, consider using CodeDeploy as a straightforward method to allow that application to take advantage of elasticity in the cloud.</p>
+
+    <h2>Decoupled Components</h2>h2>
+
+    <h3>Simple Queue Service (SQS)</h3>
+
+
+
+    <h3>Simple Workflow Service (SWF)</h3>
+
+
+    <h3>Simple Notification Service (SNS)</h3>
+
+
+    <h3>Scalable NoSQL data store: DynamoDB</h3>
+
+
+    <h2>Optimize for Performance</h2>
+
+    <h3>Caching: AWS Elasticache</h3>
+
+
+    <h3>Caching: AWS CloudFront</h3>
+
+
+    <h3>Search: AWS CloudSearch</h3>
+
+
+    <h3>Serverless Architectures: API Gateway</h3>
+
+
+    <h3>Server Architectures: AWS Lambda</h3>
+
+
+    <h2>Security</h2>
+
+
+    <h3>The Shared Security Model</h3>
+
+
+    <h3>Identity and Access Management (IAM)</h3>
+
+
+    <h3>Security Groups</h3>
+
+
+    <h3>Virtual Private Cloud (VPC)</h3>
+
+
+    <h2>Optimizing for Cost</h2>
+
+
+    <h3>Keeping Tabs on the Tab</h3>
+
+
+    <h3>Matching Supply with Demand</h3>
+
+
+    <h3>Utilizing Cost Effective Resources</h3>
+
+
+    <h2>Set Up a Web Application Architecture w/ Servers</h2>
+
+
+    <h3>Web Application Architecture</h3>
+
+
+    <h3>Sign Up for AWS</h3>
+
+
+    <h3>Create a new IAM user</h3>
+
+
+    <h3>Creating a key pair</h3>
+
+
+    <h3>Configuring a security group</h3>
+
+
+    <h3>Launching an EC2 Instance</h3>
+
+
+    <h3>Creating an ELB</h3>
+
+
+    <h3>Connect to the EC2 Instance view HTTP</h3>
+
+
+    <h3>Connect to the EC2 Instance vie SSH</h3>
+
+
+    <h3>Create a MySQL RDS Database</h3>
+
+
+    <h3>Create a Custom Server Image</h3>
+
+
+    <h3>Auto Scaling</h3>
+
+
+    <h3>Use Elastic Beanstalk</h3>
+
+
+    <h2>Go Serverless</h2>
+
+
+    <h3>Use S3 for web application hosting</h3>
+
+
+    <h3>Lambda and the gateway API</h3>
+
+
+    <h3>Store Data on Dynamo DB</h3>
+
+
+    <h3>Deploy the API and Test the Application</h3>
+
+
+    <h2>Conclusion</h2>
+
+    <h3>Next Steps</h3>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,274 @@
+<div class="grid-container">
+  <div class="grid-x grid-margin-x">
+    <div class="cell large-12">
+      <h1>Angular: Ecosystems</h1>
+      <h2>The CLI</h2>
+      <p class="lead">Interacting Solely w/ the keyboard and text, n o GUI</p>
+      <ul>
+        <li>Most common approach is to use the
+          <br>BASH - (Bourne Again Shell)</li>
+        <li>Special installation instructions for getting BASH onto Windows machines</li>
+        <li>Usually you find yourself following a common pattern
+          <br>> [command] [options] [arguments]
+          <ul>
+            <li>Commands - the program you want to run</li>
+            <li>Options - change how the program works when you run the command</li>
+            <li>Arguments - the data you want to pass into the command when it runs</li>
+          </ul>
+        </li>
+        <li>Usually there'll be a man page w/ usage instructions
+          <br>> man (command)</li>
+      </ul>
+      <h2>Operating Systems and Virtual Machines</h2>
+      <p class="lead">Special software program that acts like a brain for your computer</p>
+      <ul>
+        <li>It tells the hardware what to do, and how to act based on inputs and outputs, and the programs installed on your
+          machine
+        </li>
+
+        <li>Hardware - all the physical things you can touch and hold</li>
+        <li>Software - All the programs and instructions that tell your computer what to do</li>
+        <li>The OS sits between the hardware and the software, managing resources and giving the user a chance to interact</li>
+      </ul>
+      <h3>Virtual Machines</h3>
+      <p class="lead">A software program that acts like a hardware interface for OS's</p>
+      <p>The big benefit is that they allow you and your team to install the exact same configuration across all your computers
+        and servers, so the code you write will be written in the same environment.</p>
+      <ol>
+        <li>You instal the VM onto your computer</li>
+        <li>Once installed your computer acts as the host machine, and each of the virtualOS is treated as a guest</li>
+        <li>Guest OS's never touch the host - so you can configure each guest independently of your host machine</li>
+      </ol>
+      <p>Aith Angular, the 2 most common Virtual Machines are:</p>
+      <ul>
+        <li>VirtualBox - allows you to install and run full OS images, it's like installing a whole new operating system, but
+          there are some downsides:
+          <ul>
+            <li>Very large files</li>
+            <li>Uses lots of memory</li>
+            <li>Slow to boot</li>
+            <li>Hard to share</li>
+          </ul>
+        </li>
+        <li>Vagrant - solves the issues above by providing
+          <ul>
+            <li>A common platform and API to help share virtual machines</li>
+            <li>Vagrant Images - "Boxes"
+              <ul>
+                <li>Boot up fast (1 or 2 minutes)</li>
+                <li>Uses less hard drive space and memory than virtual machines - by allowing you to build a custom machine in
+                  layers, add the bits and pieces you need, and toss the rest</li>
+                <li>This makes virtual boxes much easier to share, update, and work with everyday.</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Servers and Databases</h2>
+      <p class="lead">They're at the center of every Angular app</p>
+      <ul>
+        <li>Servers - are what sit on the backend of your Angular app, and usually wired into a network of some kind</li>
+        <li>Servers must be reliable</li>
+        <li>Go with a vendor that specializes in maintenance and upkeep of server hardware</li>
+        <li>Some good options are
+          <ul>
+            <li>Amazon Web Services (AWS)</li>
+            <li>Google Cloud Platform</li>
+            <li>Microsoft Azure</li>
+            <li>Digital Ocean</li>
+          </ul>
+        </li>
+        <li>Basically, the internet is just a bunch of publically available servers that are accessed through a web browser
+          <ul>
+            <li>It sends requests and resources to the backend</li>
+            <li>Where the backend sends back data to the browser</li>
+            <li>This data is usually stored in a database:
+              <ul>
+                <li>They're like filing cabinets for your data</li>
+                <li>They make it easy to add and find entries based on keywords and search terms</li>
+                <li>There are 2 types of databases
+                  <ul>
+                    <li>SQL - Structured Query Language - Acts as a common interface for finding and filtering records in a database
+                      - great for large data sets and complex relationshhips because the data is stored in tables - examples
+                      - MySQL and PostgreSQL</li>
+                    <li>NoSQL - Great for data sets with nested properties - or data that's being stored temporarily because
+                      the data can easily be passed back and forth between the front end and the back end - examples - CouchDB
+                      and Redis</li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Version Control</h2>
+      <p class="lead">Aka: "Revision Control" or "Source Controll" are ways of managing changes in the code of your project across all the
+        members of your team.</p>
+      <ul>
+        <li>What was changed?</li>
+        <li>Who changed it?</li>
+        <li>How to undo it</li>
+        <li>How to unify the changes</li>
+      </ul>
+      <h3>Most Use Git</h3>
+      <p class="lead">A distributed version control system </p>
+      <ul>
+        <li>Very robust meaning everybody has a full copy of the history of all the changes to the code base</li>
+        <li>Making it very easy to restore is something happens to the original</li>
+        <li>Repo - an entire code base in version controll</li>
+        <li>Repos have branches - Independent versions of the code base</li>
+        <li>All branches are stored in the same repo</li>
+        <li>You make a new Independent copy of a Repo by cloning it, that may or may not stay insync w/ the original repo</li>
+        <li>Commits - are a set of changes across any # of files, these changes get recorded in the changelog of the repo</li>
+        <li>A conflict happens when there are 2 or more changes to the repo that can't be automatically figured out, and you
+          have to manually fix and figure it out</li>
+        <li>You reconcile things by merging the different versions</li>
+        <li>Pull - when you download the latest version from a remote repo</li>
+        <li>Push - when you upload your version to a remote repo</li>
+      </ul>
+      <h2>Code Editors</h2>
+      <p class="lead">Allow you to edit plain text files</p>
+      <ul>
+        <li>Recommend Visual Studio Code and works well w/ Angular projects</li>
+        <li>There are also IDE's - Integrated Development environments
+          <ul>
+            <li>very robust and includes everything you might need to write, test, run your application - examples - Webstorm
+              and Visual Studio (DIFFERENT FROM VS CODE)</li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Testing and Debugging</h2>
+      <p class="lead">Angualr was built from the ground up for Testing and Debugging</p>
+      <h3>Most common tests</h3>
+      <ul>
+        <li>Code linting - checking code for readability, consistency, and syntax
+          <br>The never run your code, they just read over every line in a file and checks them against rules</li>
+        <li>Unit testing - checking small chunks of code to make sure they work as expected, they make it clear as to what your
+          code is meant to do, and lowers the risk of new code causing errors, they are usually:
+          <ul>
+            <li>Functions</li>
+            <li>Objects</li>
+            <li>Methods</li>
+          </ul>
+          Angular uses Jasmine framework w/ the Karma task runner
+        </li>
+        <li>End-to-end testing - "Integration tests" - used for testing user interaction - makes sure the UI is meant to work
+          the way it's supposed to by pretending to be an end user
+          <ul>
+            <li>Angular uses the Protractor Framework for end-to-end testing</li>
+          </ul>
+        </li>
+      </ul>
+      <h3>Debuggin</h3>
+      <p class="lead">Almost always happens in the browser, in some sort of dev tool that let's you see reports of the errors</p>
+      <p>Angular does a great job of telling you what's wrong</p>
+      <h2>Building and Deploying Code</h2>
+      <ul>
+        <li>You want to use Google's official tool
+          <strong>ng</strong>
+        </li>
+        <li>First you must have
+          <strong>npm</strong> to install it</li>
+        <li>then you can run
+          <code>$ npm install -g @angular/cli</code> to install the angular CLI tool globally</li>
+        <li>Compile the build/src code with
+          <br>
+          <code>$ ng build --prod</code>
+          <br> The angular CLI tool has many commands to start and maintain an Angular project
+          <br>Look at the documentation for a full list of he options available.
+        </li>
+        <li>You can also use other tools like
+          <ul>
+            <li>Gulp</li>
+            <li>Grunt</li>
+            <li>Yarn</li>
+            <li>Webpack</li>
+          </ul>
+        </li>
+      </ul>
+      <h3>Deploying Code</h3>
+      <ul>
+        <li>Hosted Platforms</li>
+        <li>SSH</li>
+        <li>Continuous Integration</li>
+      </ul>
+      <h2>Continuous Integration, Delivery and Deployment</h2>
+      <p class="lead">Involved in a workflow that reduces risk and improve code quality</p>
+      <ul>
+        <li>CI - Process of committing small chunks of code to a shared repository several times a day
+          <ul>
+            <li>Each commit is tested for bugs using the automated testing process</li>
+            <li>If there's a bug it's easy to rewind to a functional state</li>
+          </ul>
+          Common Platforms are: (they all build and test code in an automated way) - Automation gives you confidence!
+          <ul>
+            <li>Travis CI</li>
+            <li>Codeship</li>
+            <li>Jenkins</li>
+            <li>Circle CI</li>
+          </ul>
+        </li>
+        <li>CD(elivery) - the confidence to deliver, keeping your code in a state of readyness that can be pushed to production
+          at any time - while you still get to choose when you push code into production</li>
+        <li>CD(eployment) - automates the deployment process - every new change, no matter how small is pushed right to production
+          as soon as it passes the test suite - while it takes a way some control, it also removes a step from the build
+          deploy process so you can focus on building new features for your app</li>
+      </ul>
+      <h2>Complementary Frameworks</h2>
+      <p class="lead">Angular is a client-side framework that you use to build single page apps.</p>
+      <ul>
+        <li>A client is any device on a network used by an end user</li>
+        <li>SPA - are browser based apps that give users a very fluid experience, often mimicking the look and feel of native
+          applications installed on a users' device</li>
+        <li>Angular is a very powerful frame work that you can use to build great apps! But is also used with
+          <ul>
+            <li>Bootstrap</li>
+            <li>Ionic - prebuilt UI for mobile apps</li>
+            <li>Foundation</li>
+            <li>Pure</li>
+            <li>ng-bootstrap</li>
+          </ul>
+          These give you prebuilt UI's to use in our apps
+        </li>
+        <li>You can also pair Angular w/ serverside frameworks such as:
+          <ul>
+            <li>ASP.net</li>
+            <li>Laravel</li>
+          </ul>
+        </li>
+        <li>Servers - are what sit on the backend of your application, they connect clients on a network, listening for a request,
+          sending resources to the client - server side frameworks resemble the experience of a normal website, but the benefits
+          are
+          <ul>
+            <li>Faster load times</li>
+            <li>Simpler integration w/ databases</li>
+          </ul>
+        </li>
+      </ul>
+      <p>Angular is a modular framework w/ tons of components and for this we use Dependency Managers</p>
+      <ul>
+        <li>npm</li>
+        <li>yarn</li>
+      </ul>
+      <h2>Project Management</h2>
+      <p class="lead">Management of a project is just as important as its creation</p>
+      <p>Gihub and Bitbucket are great places to start managing your projects, they allow you to:</p>
+      <ul>
+        <li>Issue Tracking - track any kind of task you want, it's like a to-do list for the team</li>
+        <li>Wikis - lets you write long form content about your project and processes, documentation</li>
+        <li>Pull Requests - Let's you discuss and review code changes before they're merged into a branch, giving you an extra
+          layer of confidence before committing changes to the repository</li>
+        <li>JIRA(manage multiple projects all from one place) and Confluence(Wikis, to deal w/ multiple teams) are both alternatives
+          to issue tracking and wikis
+          <br>Then there are other things to help
+          <ul>
+            <li>Trello</li>
+            <li>Basecamp</li>
+            <li>Asana</li>
+          </ul>
+        </li>
+      </ul>
+      <h2>Next Steps</h2>
+    </div>
+  </div>
+</div>
